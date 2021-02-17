@@ -1,0 +1,20 @@
+@import "../../../styles/global/variables/global.scss";
+
+.button-primary {
+  width: 60%;
+  background-color: #fff;
+  color: $mainPurple;
+  border: 2px solid $mainPurple;
+  padding: 0.8rem 1.3rem;
+  border-radius: 2rem;
+  font-size: 1.2rem;
+  transition: background 0.8s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:hover {
+    background-color: $mainGreen;
+  }
+}

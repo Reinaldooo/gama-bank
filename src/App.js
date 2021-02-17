@@ -1,7 +1,7 @@
 import "./styles/style.scss";
 import Landing from "./views/pages/Landing";
 
-function App() {
+export default function App() {
   return (
     // This fragment will be the redux provider in the future
     <>
@@ -9,5 +9,3 @@ function App() {
     </>
   );
 }
-
-export default App;
