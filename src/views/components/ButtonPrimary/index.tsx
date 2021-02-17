@@ -1,6 +1,6 @@
 import React from "react";
 //
-import "./styles.scss";
+import * as S from "./styles";
 import rightArrow from "../../../assets/right-arrow.png";
 
 interface SectionProps {
@@ -10,14 +10,15 @@ interface SectionProps {
 
 const SectionA: React.FC<SectionProps> = ({ title, _width }) => {
   return (
-    <button
+    <S.Button
       type="button"
       className="button-primary"
-      style={_width ? { width: _width, marginTop: "2.5rem" } : undefined}
+      _width={_width}
+      _marTop="2.5rem"
     >
       {title}
       <img src={rightArrow} alt="" />
-    </button>
+    </S.Button>
   );
 };
 

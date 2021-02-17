@@ -1,6 +1,6 @@
 import React from "react";
 //
-import "./styles.scss";
+import * as S from "./styles";
 
 interface WhiteCardProps {
   title: string;
@@ -8,10 +8,10 @@ interface WhiteCardProps {
 
 const WhiteCard: React.FC<WhiteCardProps> = ({ title, children }) => {
   return (
-    <div className="white-card" style={{ width: "100%" }}>
+    <S.Container _width="100%">
       <h4>{title}</h4>
       {children}
-    </div>
+    </S.Container>
   );
 };
 
