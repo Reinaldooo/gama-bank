@@ -1,6 +1,11 @@
 import styled, { css } from "styled-components";
 
-export const Container = styled.div`
+interface ContainerProps {
+  isFocused: boolean;
+  isErrored: boolean;
+}
+
+export const Container = styled.div<ContainerProps>`
   background-color: #fff;
   width: 100%;
   padding: 5px 10px;
