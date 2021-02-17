@@ -1,3 +1,4 @@
+import React from "react";
 import { AiOutlineUser, AiFillLock } from "react-icons/ai";
 //
 import gamaLogo from "../../../../assets/gama-academy-logo-horizontal-verde-branco1 1.png";
@@ -6,7 +7,7 @@ import InputPrimary from "../../../components/InputPrimary";
 import WhiteCard from "../../../components/WhiteCard";
 import "./styles.scss";
 
-export default function SectionA() {
+const SectionA: React.FC = () => {
   return (
     <section className="sectionA">
       <header className="sectionA-header">
@@ -52,10 +53,12 @@ export default function SectionA() {
               icon={AiFillLock}
               placeholder="Confirmação de senha"
             />
-            <ButtonPrimary title="Continuar" nWidth="100%" />
+            <ButtonPrimary title="Continuar" _width="100%" />
           </WhiteCard>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default SectionA;
