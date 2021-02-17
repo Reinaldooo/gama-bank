@@ -5,23 +5,23 @@ import gamaLogo from "../../../../assets/gama-academy-logo-horizontal-verde-bran
 import ButtonPrimary from "../../../components/ButtonPrimary";
 import InputPrimary from "../../../components/InputPrimary";
 import WhiteCard from "../../../components/WhiteCard";
-import "./styles.scss";
+import * as S from "./styles";
 
 const SectionA: React.FC = () => {
   return (
-    <section className="sectionA">
-      <header className="sectionA-header">
+    <S.Container>
+      <S.Header>
         <a href="/">
           <img src={gamaLogo} alt="logo" />
         </a>
-      </header>
-      <div className="sectionA-content">
-        <div className="sectionA-content-left">
+      </S.Header>
+      <S.Content>
+        <S.LeftContent>
           <span>Gama Bank é um projeto de nossos alunos.</span>
           <span>Já tem conta?</span>
           <ButtonPrimary title="Acessar" />
-        </div>
-        <div className="sectionA-content-right">
+        </S.LeftContent>
+        <S.RightContent>
           <WhiteCard title="Peça sua conta e cartão de crédito Gama Bank">
             <InputPrimary
               name="cpf"
@@ -55,9 +55,9 @@ const SectionA: React.FC = () => {
             />
             <ButtonPrimary title="Continuar" _width="100%" />
           </WhiteCard>
-        </div>
-      </div>
-    </section>
+        </S.RightContent>
+      </S.Content>
+    </S.Container>
   );
 };
 

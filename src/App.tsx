@@ -1,6 +1,6 @@
 import React from "react";
 //
-import "./styles/style.scss";
+import GlobalStyles from "./styles";
 import Landing from "./views/pages/Landing";
 
 const App: React.FC = () => {
@@ -8,6 +8,7 @@ const App: React.FC = () => {
     // This fragment will be the redux provider in the future
     <>
       <Landing />
+      <GlobalStyles />
     </>
   );
 };
