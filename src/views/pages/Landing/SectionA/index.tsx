@@ -2,12 +2,15 @@ import React, { useRef } from "react";
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web";
 import { AiOutlineUser, AiFillLock } from "react-icons/ai";
+import * as Yup from "yup";
 //
 import gamaLogo from "../../../../assets/gama-academy-logo-horizontal-verde-branco1 1.png";
 import ButtonPrimary from "../../../components/ButtonPrimary";
 import InputPrimary from "../../../components/InputPrimary";
 import WhiteCard from "../../../components/WhiteCard";
 import * as S from "./styles";
+import { useToast } from "../../../../context/toastContext";
+import getValidationErrors from "../../../../utils/getValidationErrors";
 
 interface CreateAccountForm {
   cpf: string;
@@ -19,9 +22,53 @@ interface CreateAccountForm {
 
 const SectionA: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+  const { addToast } = useToast();
 
   async function handleSubmit(data: CreateAccountForm) {
-    console.log(data);
+    // Unform automatically prevents default
+    try {
+      // Start cleaning errors
+      formRef.current?.setErrors({});
+
+      const schema = Yup.object({
+        cpf: Yup.string().required("Cpf obrigatório."),
+        name: Yup.string().required("Campo obrigatório"),
+        fullName: Yup.string().required("Campo obrigatório"),
+        passwd: Yup.string().required("Senha obrigatória"),
+        confirmPasswd: Yup.string().oneOf(
+          [Yup.ref("passwd"), null],
+          "Senhas diferentes"
+        ),
+      });
+
+      await schema.validate(data, { abortEarly: false });
+
+      // await signIn({
+      //   email: data.email,
+      //   passwd: data.passwd,
+      // });
+
+      addToast({
+        title: "Bem-vindo!",
+      });
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
+        const errors = getValidationErrors(err);
+        // This is the way to set error with unform. Each key is the input name and
+        // it will be set on the error variable coming from the useField hook in the Comp
+        formRef.current?.setErrors(errors);
+        addToast({
+          title: "Por favor confira seus dados.",
+          type: "error",
+        });
+        return;
+      }
+      addToast({
+        title: "Ops, algo deu errado!",
+        type: "error",
+        message: "Por favor tente novamente.",
+      });
+    }
   }
 
   return (

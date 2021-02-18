@@ -1,6 +1,7 @@
 import React, { useState, InputHTMLAttributes, useEffect, useRef } from "react";
 import { useField } from "@unform/core";
 import { IconBaseProps } from "react-icons";
+import { FiAlertTriangle } from "react-icons/fi";
 //
 import * as S from "./styles";
 
@@ -33,6 +34,11 @@ const InputPrimary: React.FC<InputProps> = ({ icon: Icon, name, ...rest }) => {
         defaultValue={defaultValue}
         {...rest}
       />
+      {error && (
+        <S.ErrorTooltip title={error}>
+          <FiAlertTriangle size={20} />
+        </S.ErrorTooltip>
+      )}
     </S.Container>
   );
 };
