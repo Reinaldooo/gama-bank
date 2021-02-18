@@ -2,11 +2,9 @@ import { createGlobalStyle } from "styled-components";
 
 export const mainPurple: string = "#8c52e5";
 export const mainGreen: string = "#68de5a";
-export const FontDefault: string =  `font-family: 'Roboto', sans-serif;`;
+export const FontDefault: string = `font-family: 'Roboto', sans-serif;`;
 
 export default createGlobalStyle`
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-
 * {
   margin: 0;
   padding: 0;
