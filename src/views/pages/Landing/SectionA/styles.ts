@@ -2,7 +2,7 @@ import styled from "styled-components";
 //
 import happy from "../../../../assets/happy.png";
 
-export const Container = styled.div`
+export const Container = styled.section`
   height: 100vh;
   width: 100%;
   padding: 1rem;

@@ -13,7 +13,7 @@ export const Container = styled.div<ContainerProps>`
 
   h4 {
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 700;
     margin-bottom: 1rem;
   }
 `;
