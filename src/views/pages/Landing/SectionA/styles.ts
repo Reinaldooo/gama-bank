@@ -2,12 +2,13 @@ import styled from "styled-components";
 //
 import happy from "../../../../assets/happy.png";
 
-export const Container = styled.div`
-  height: 100vh;
+export const Container = styled.section`
+  min-height: 100vh;
   width: 100%;
   padding: 1rem;
   background: url(${happy}) no-repeat center bottom;
   background-size: 45%;
+  float: left;
 
   @media screen and (max-width: 991px) {
     background: none;
@@ -64,6 +65,7 @@ export const Content = styled.div`
 export const LeftContent = styled.div`
   flex: 0 0 25%;
   margin-left: 8rem;
+  
   @media screen and (max-width: 1490px) {
     margin-left: 2.5rem;
   }

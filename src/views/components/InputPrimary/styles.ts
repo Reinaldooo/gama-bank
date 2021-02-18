@@ -35,7 +35,7 @@ export const Container = styled.div<ContainerProps>`
     background-color: transparent;
     flex: 1;
     border: 0;
-    height: 45px;
+    height: 35px;
     color: #222;
     outline: none;
     font-size: 0.9rem;
