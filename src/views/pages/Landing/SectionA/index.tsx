@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
+import { FormHandles } from "@unform/core";
+import { Form } from "@unform/web";
 import { AiOutlineUser, AiFillLock } from "react-icons/ai";
 //
 import gamaLogo from "../../../../assets/gama-academy-logo-horizontal-verde-branco1 1.png";
@@ -7,7 +9,21 @@ import InputPrimary from "../../../components/InputPrimary";
 import WhiteCard from "../../../components/WhiteCard";
 import * as S from "./styles";
 
+interface CreateAccountForm {
+  cpf: string;
+  name: string;
+  fullName: string;
+  passwd: string;
+  confirmPasswd: string;
+}
+
 const SectionA: React.FC = () => {
+  const formRef = useRef<FormHandles>(null);
+
+  async function handleSubmit(data: CreateAccountForm) {
+    console.log(data);
+  }
+
   return (
     <S.Container>
       <S.Header>
@@ -23,37 +39,39 @@ const SectionA: React.FC = () => {
         </S.LeftContent>
         <S.RightContent>
           <WhiteCard title="Peça sua conta e cartão de crédito Gama Bank">
-            <InputPrimary
-              name="cpf"
-              type="text"
-              icon={AiOutlineUser}
-              placeholder="CPF"
-            />
-            <InputPrimary
-              name="name"
-              type="text"
-              icon={AiOutlineUser}
-              placeholder="Nome de usuário"
-            />
-            <InputPrimary
-              name="fullName"
-              type="text"
-              icon={AiOutlineUser}
-              placeholder="Nome Completo"
-            />
-            <InputPrimary
-              name="passwd"
-              type="password"
-              icon={AiFillLock}
-              placeholder="Senha"
-            />
-            <InputPrimary
-              name="passwd-confirm"
-              type="password"
-              icon={AiFillLock}
-              placeholder="Confirmação de senha"
-            />
-            <ButtonPrimary title="Continuar" _width="100%" />
+            <Form ref={formRef} onSubmit={handleSubmit}>
+              <InputPrimary
+                name="cpf"
+                type="text"
+                icon={AiOutlineUser}
+                placeholder="CPF"
+              />
+              <InputPrimary
+                name="name"
+                type="text"
+                icon={AiOutlineUser}
+                placeholder="Nome de usuário"
+              />
+              <InputPrimary
+                name="fullName"
+                type="text"
+                icon={AiOutlineUser}
+                placeholder="Nome Completo"
+              />
+              <InputPrimary
+                name="passwd"
+                type="password"
+                icon={AiFillLock}
+                placeholder="Senha"
+              />
+              <InputPrimary
+                name="confirmPasswd"
+                type="password"
+                icon={AiFillLock}
+                placeholder="Confirmação de senha"
+              />
+              <ButtonPrimary type="submit" title="Continuar" _width="100%" />
+            </Form>
           </WhiteCard>
         </S.RightContent>
       </S.Content>
