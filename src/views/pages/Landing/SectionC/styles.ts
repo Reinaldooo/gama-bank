@@ -6,6 +6,8 @@ export const BlockSection = styled.section`
   position: relative;
   display: block;
   float: left;
+  margin: 0;
+  padding: 0;
 
   .home-03 {
     height: 100vh;

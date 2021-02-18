@@ -1,19 +1,20 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import { AiOutlineUser, AiFillLock } from "react-icons/ai";
 //
 import gamaLogo from "../../../../assets/gama-academy-logo-horizontal-verde-branco1 1.png";
 import ButtonPrimary from "../../../components/ButtonPrimary";
 import InputPrimary from "../../../components/InputPrimary";
-import WhiteCard from "../../../components/WhiteCard";
+import WhiteCard from "../../../components/WhiteCardHome";
 import * as S from "./styles";
 
 const SectionA: React.FC = () => {
   return (
     <S.Container>
       <S.Header>
-        <a href="/">
+        <Link to="/" href="/">
           <img src={gamaLogo} alt="logo" />
-        </a>
+        </Link>
       </S.Header>
       <S.Content>
         <S.LeftContent>
