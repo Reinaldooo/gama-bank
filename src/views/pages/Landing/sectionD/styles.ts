@@ -1,3 +1,6 @@
+import styled from "styled-components";
+
+export const Section = styled.section `
 .section-d{
     height: 100vh;
     width: 100%;
@@ -37,3 +40,4 @@
     margin-left: 5%;
     color: #FFFFFF;
 }
+`
