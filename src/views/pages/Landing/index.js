@@ -1,4 +1,5 @@
 import "./styles.scss";
+import SectionD from "../section-d";
 
 export default function Landing() {
   return (
@@ -6,6 +7,8 @@ export default function Landing() {
       <section className="section-a">
         <header>Olá</header>
       </section>
+
+        <SectionD/>
     </>
   );
 }
