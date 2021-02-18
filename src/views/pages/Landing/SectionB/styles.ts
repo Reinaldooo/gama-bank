@@ -3,9 +3,12 @@ import styled from "styled-components";
 export const ContainerSection = styled.section`
     min-height: 100vh;
     width: 100%;
-    padding: 1rem;
-    background-color:#EAEAEA;
-    padding: 1.5rem 0;   
+    background-color: #EAEAEA;
+    padding: 1.5rem 0;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
         
     img {
         max-width: 100%;
