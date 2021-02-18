@@ -10,7 +10,7 @@ export const BlockSection = styled.section`
   padding: 0;
 
   .home-03 {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,11 +24,27 @@ export const BlockSection = styled.section`
       align-items: center;
       justify-content: center;
 
+      @media (min-width: 0) and (max-width: 767px) {
+        flex-flow: column;
+      }
+
+      @media (min-width: 768px) and (max-width: 991px) {
+        flex-flow: column;
+      }
+
       .interno {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 50%;
+
+        @media (min-width: 0) and (max-width: 767px) {
+          width: 100%;
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+          width: 100%;
+        }
 
         .bloco01 {
           width: 100%;
@@ -39,6 +55,15 @@ export const BlockSection = styled.section`
             font-weight: 700;
             font-size: 42px;
             color: #ffffff;
+
+            @media (min-width: 0) and (max-width: 767px) {
+              text-align: center;
+              font-size: 35px;
+            }
+
+            @media (min-width: 768px) and (max-width: 991px) {
+              text-align: center;
+            }
           }
 
           .subtitulo-anuidade {
@@ -46,6 +71,15 @@ export const BlockSection = styled.section`
             font-weight: 500;
             font-size: 23px;
             color: #ffffff;
+
+            @media (min-width: 0) and (max-width: 767px) {
+              text-align: center;
+              font-size: 20px;
+            }
+
+            @media (min-width: 768px) and (max-width: 991px) {
+              text-align: center;
+            }
           }
         }
 
@@ -62,33 +96,15 @@ export const BlockSection = styled.section`
             font-size: 186px;
             color: #68de5a;
             text-align: center;
-          }
-        }
-      }
-    }
-  }
 
-  @media (min-width: 0) and (max-width: 767px) {
-  .block_section {
-    .home-03 {
-      .elementos-anuidade {
-        flex-flow: column;
-
-        .interno {
-          width: 100%;
-
-          .bloco01 {
-            .titulo-anuidade {
+            @media (min-width: 0) and (max-width: 767px) {
+              font-size: 130px;
               text-align: center;
+              margin-top: 10px;
             }
 
-            .subtitulo-anuidade {
-              text-align: center;
-            }
-          }
-
-          .bloco02 {
-            .titulo-valor-anuidade {
+            @media (min-width: 768px) and (max-width: 991px) {
+              margin-top: 10px;
               text-align: center;
             }
           }
@@ -96,35 +112,5 @@ export const BlockSection = styled.section`
       }
     }
   }
-}
 
-@media (min-width: 768px) and (max-width: 991px) {
-  .block_section {
-    .home-03 {
-      .elementos-anuidade {
-        flex-flow: column;
-
-        .interno {
-          width: 100%;
-
-          .bloco01 {
-            .titulo-anuidade {
-              text-align: center;
-            }
-
-            .subtitulo-anuidade {
-              text-align: center;
-            }
-          }
-
-          .bloco02 {
-            .titulo-valor-anuidade {
-              text-align: center;
-            }
-          }
-        }
-      }
-    }
-  }
-}
 `
