@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web";
 import { AiOutlineUser, AiFillLock } from "react-icons/ai";
@@ -8,10 +8,11 @@ import * as Yup from "yup";
 import gamaLogo from "../../../../assets/gama-academy-logo-horizontal-verde-branco1 1.png";
 import ButtonPrimary from "../../../components/ButtonPrimary";
 import InputPrimary from "../../../components/InputPrimary";
-import WhiteCard from "../../../components/WhiteCardHome";
+import WhiteCardHome from "../../../components/WhiteCardHome";
 import * as S from "./styles";
 import { useToast } from "../../../../context/toastContext";
 import getValidationErrors from "../../../../utils/getValidationErrors";
+import api from "../../../../services/api";
 
 interface CreateAccountForm {
   cpf: string;
@@ -23,12 +24,14 @@ interface CreateAccountForm {
 
 const SectionA: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+  const history = useHistory();
   const { addToast } = useToast();
 
   async function handleSubmit(data: CreateAccountForm) {
     // Unform automatically prevents default
+    const { cpf, name, fullName, passwd } = data;
     try {
-      // Start cleaning errors
+      // Start by cleaning errors
       formRef.current?.setErrors({});
 
       const schema = Yup.object({
@@ -44,19 +47,27 @@ const SectionA: React.FC = () => {
 
       await schema.validate(data, { abortEarly: false });
 
-      // await signIn({
-      //   email: data.email,
-      //   passwd: data.passwd,
-      // });
+      const formData = {
+        cpf,
+        login: name,
+        nome: fullName,
+        senha: passwd,
+      };
+
+      await api.post(
+        "https://accenture-java-desafio.herokuapp.com/usuarios",
+        formData
+      );
 
       addToast({
-        title: "Bem-vindo!",
+        title: "Conta criada!",
       });
+      history.push("/login");
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
-        // This is the way to set error with unform. Each key is the input name and
-        // it will be set on the error variable coming from the useField hook in the Comp
+        // This is the way to set errors with unform. Each key is the input name and
+        // it will be set on the 'error' variable coming from the useField hook in the Comp
         formRef.current?.setErrors(errors);
         addToast({
           title: "Por favor confira seus dados.",
@@ -83,10 +94,13 @@ const SectionA: React.FC = () => {
         <S.LeftContent>
           <span>Gama Bank é um projeto de nossos alunos.</span>
           <span>Já tem conta?</span>
-          <ButtonPrimary title="Acessar" />
+          <ButtonPrimary
+            title="Acessar"
+            onClick={() => history.push("/login")}
+          />
         </S.LeftContent>
         <S.RightContent>
-          <WhiteCard title="Peça sua conta e cartão de crédito Gama Bank">
+          <WhiteCardHome title="Peça sua conta e cartão de crédito Gama Bank">
             <Form ref={formRef} onSubmit={handleSubmit}>
               <InputPrimary
                 name="cpf"
@@ -120,7 +134,7 @@ const SectionA: React.FC = () => {
               />
               <ButtonPrimary type="submit" title="Continuar" _width="100%" />
             </Form>
-          </WhiteCard>
+          </WhiteCardHome>
         </S.RightContent>
       </S.Content>
     </S.Container>

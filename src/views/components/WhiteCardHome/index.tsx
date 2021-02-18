@@ -2,11 +2,11 @@ import React from "react";
 //
 import * as S from "./styles";
 
-interface WhiteCardProps {
+interface WhiteCardHomeProps {
   title: string;
 }
 
-const WhiteCard: React.FC<WhiteCardProps> = ({ title, children }) => {
+const WhiteCardHome: React.FC<WhiteCardHomeProps> = ({ title, children }) => {
   return (
     <S.Container _width="100%">
       <h4>{title}</h4>
@@ -15,4 +15,4 @@ const WhiteCard: React.FC<WhiteCardProps> = ({ title, children }) => {
   );
 };
 
-export default WhiteCard;
+export default WhiteCardHome;

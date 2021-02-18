@@ -7,7 +7,6 @@ import { ToastProvider } from "./context/toastContext";
 
 const App: React.FC = () => {
   return (
-    // This fragment will be the redux provider in the future
     <BrowserRouter>
       <ToastProvider>
         <Routes />
