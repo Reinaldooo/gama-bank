@@ -1,8 +1,20 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, keyframes } from "styled-components";
 
 export const mainPurple: string = "#8c52e5";
 export const mainGreen: string = "#68de5a";
 export const FontDefault: string = `font-family: 'Roboto', sans-serif;`;
+
+export const bounceX = keyframes`
+0% {
+  transform: scaleX(1);
+}
+50% {
+  transform: scaleX(1.05);
+}
+100% {
+  transform: scaleX(1);
+}
+`;
 
 export default createGlobalStyle`
 * {
