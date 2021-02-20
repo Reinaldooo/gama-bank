@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 //
 import api from "../../../services/api";
-import { dashboardFetchSuccess } from "../../../store/actions";
+import { accountDataSuccess } from "../../../store/modules/accounts/actions";
 
 const Dashboard: React.FC = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const Dashboard: React.FC = () => {
         },
       })
       .then(({ data }) => {
-        dispatch(dashboardFetchSuccess(data));
+        dispatch(accountDataSuccess(data));
       })
       .catch((err) => console.log(err));
   }, [dispatch]);
