@@ -14,6 +14,14 @@ export const ContainerCard = styled.section`
     justify-content: center;
     background: ${mainPurple};
 
+    @media (min-width: 0) and (max-width: 767px) {
+      padding: 0 20px;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      padding: 0 20px;
+    }
+
     .white-card {
       background-color: #FFFFFF;
       width: 100%;

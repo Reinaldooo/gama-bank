@@ -2,11 +2,11 @@ import React from "react";
 import { ContainerCard } from "./styles";
 
 interface WhiteCardGenericLoginRegisterProps {
-  title: string;
+  title: string | null;
   subtitle: string | null;
 }
 
-const WhiteCardGeneric: React.FC<WhiteCardGenericLoginRegisterProps> = ({
+const WhiteCardLoginRegister: React.FC<WhiteCardGenericLoginRegisterProps> = ({
   title,
   subtitle,
   children,
@@ -15,7 +15,7 @@ const WhiteCardGeneric: React.FC<WhiteCardGenericLoginRegisterProps> = ({
     <ContainerCard>
       <div className="section-login">
         <div className="white-card">
-          <p className="titulo-card">{title}</p>
+          {title ? <p className="titulo-card">{title}</p> : null}
           {subtitle ? <p className="subtitulo-card">{subtitle}</p> : null}
           {children}
         </div>
@@ -24,4 +24,4 @@ const WhiteCardGeneric: React.FC<WhiteCardGenericLoginRegisterProps> = ({
   );
 };
 
-export default WhiteCardGeneric;
+export default WhiteCardLoginRegister;

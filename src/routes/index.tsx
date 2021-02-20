@@ -5,6 +5,7 @@ import Dashboard from "../views/pages/Dashboard";
 
 import Home from "../views/pages/Landing";
 import Login from "../views/pages/Login";
+import CardError from "../views/pages/CardError";
 import PrivateRoute from "./privateRoute";
 
 const Routes: React.FC = () => {
@@ -12,6 +13,8 @@ const Routes: React.FC = () => {
         <Switch>
             <Route path="/" exact component={Home}/>
             <Route path="/login" component={Login}/>
+            <Route path="/CardError" component={CardError}/>
+            <Route path="/dashboard" component={Dashboard}/>
             <PrivateRoute path="/dashboard" component={Dashboard}/>
             <PrivateRoute path="/deposit" component={Dashboard}/>
             <PrivateRoute path="/plans" component={Dashboard}/>

@@ -5,7 +5,8 @@ export const mainGreen: string = "#68de5a";
 export const FontDefault: string = `font-family: 'Roboto', sans-serif;`;
 
 export const bounceX = keyframes`
-0% {
+
+        0% {
   transform: scaleX(1);
 }
 50% {

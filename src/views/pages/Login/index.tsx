@@ -1,8 +1,9 @@
 import React, {useRef, useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 import api from "../../../services/api";
-import WhiteCardGeneric from "../../components/WhiteCardGeneric";
+import WhiteCardLoginRegister from "../../components/WhiteCardLoginRegister";
 import InputPrimary from "../../components/InputPrimary";
+import {AiOutlineArrowRight} from "react-icons/ai"
 import { FiChevronRight } from "react-icons/fi";
 import { FormLogin } from "./styles";
 import { FormHandles } from "@unform/core";
@@ -76,7 +77,7 @@ const Login: React.FC = () => {
 
   return (
     <>
-      <WhiteCardGeneric title="Faça seu login" subtitle={null}>
+      <WhiteCardLoginRegister title="Faça seu login" subtitle={null}>
         <FormLogin>
           <Form ref={formRef} onSubmit={loginSysGama}>
             <InputPrimary
@@ -89,7 +90,7 @@ const Login: React.FC = () => {
               type="password"
               placeholder="Digite a sua senha"
             />
-            <ButtonGeneric title="Continuar" type="submit" _colorHover="#FFFFFF" _bgHover="#8C52E5" icon={FiChevronRight} _loading={loading} />
+            <ButtonGeneric title="Continuar" type="submit" _colorHover="#FFFFFF" _bgHover="#8C52E5" icon={AiOutlineArrowRight} _loading={loading} />
             <div className="form-links">
               <Link to="/forgot-passwd">
                 Esqueci Minha Senha <FiChevronRight size={14} />
@@ -100,7 +101,7 @@ const Login: React.FC = () => {
             </div>
           </Form>
         </FormLogin>
-      </WhiteCardGeneric>
+      </WhiteCardLoginRegister>
     </>
   );
 };
