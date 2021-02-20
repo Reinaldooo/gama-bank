@@ -17,16 +17,6 @@ export const Container = styled.div `
       margin-top: 20px;
     }
 
-    .div-menu{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        width: 100%;
-        height: 100%;
-
-    }
-
     .menu-option{
         width: 100px;
         height: 100px;
@@ -49,6 +39,7 @@ export const Container = styled.div `
             width: 28px;
             height: 28px;
         }
+      
         a {
             text-decoration: none;
             display: flex;
