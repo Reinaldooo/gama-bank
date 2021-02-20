@@ -27,7 +27,9 @@ const Dashboard: React.FC = () => {
   }, [dispatch]);
 
   return (
-          <SideNav/>
+      <>
+        <SideNav/>
+      </>
   );
 };
 
