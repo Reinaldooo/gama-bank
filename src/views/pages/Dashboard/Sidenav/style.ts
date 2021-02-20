@@ -2,11 +2,20 @@ import styled from "styled-components";
 
 export const Container = styled.div `
 
+    position: fixed;
+    left: 0;
     background: #63dc3f;
+    display: flex;
     flex-direction: column;
     height: 100vh;
     width: 160px;
     align-items: center;
+  
+    .logo-gama-bank {
+      width: 100%;
+      max-width: 125px;
+      margin-top: 20px;
+    }
 
     .div-menu{
         display: flex;
@@ -15,43 +24,45 @@ export const Container = styled.div `
         flex-direction: column;
         width: 100%;
         height: 100%;
-        img{
-            width: 7vw;
-            height: 14vh;
-            margin-bottom: 15px;
-        }
 
     }
 
     .menu-option{
-        width: 70%;
-        height: 14vh;
+        width: 100px;
+        height: 100px;
         background-color: #8C52E5;
-        margin-bottom: 40px;
+        margin-bottom: 25px;
         display:flex;
         flex-direction: column;
         color: white;
         border-radius: 6px;
-        margin-left: 15px;
+          justify-content: center;
+          align-items: center;
 
         p{
-            font-size: 1vw;
-            margin-left: 8px
-            
+          font-size: 14px;
+          font-weight: 500;
         }
 
         .pix{
-            width: 30px;
-            height: 30px;
-            margin-left: 10px;
-            margin-bottom: 15px;
+            margin-left: 5px;          
+            width: 28px;
+            height: 28px;
         }
         a {
             text-decoration: none;
             display: flex;
             flex-direction: column;
-            color: white
+            color: white;
+            width: 100%;
+            height: 100%;
+            justify-content: space-around;
+            padding: 5px 7px;
         } 
+        
+      &:first-of-type {
+        margin-top: 45px;
+      }
     }
 
 
