@@ -9,7 +9,8 @@ import { useToast } from "../../../../../context/toastContext";
 import api from "../../../../../services/api";
 import getValidationErrors from "../../../../../utils/getValidationErrors";
 import InputPrimary from "../../../../components/InputPrimary";
-import ButtonPrimary from "../../../../components/ButtonPrimary";
+import { FiChevronRight } from "react-icons/fi";
+import ButtonGeneric from "../../../../components/ButtonGeneric";
 
 interface FormFields {
   cpf: string;
@@ -59,7 +60,7 @@ const CreateAccountForm: React.FC = () => {
       addToast({
         title: "Conta criada!",
       });
-      history.push("/dashboard");
+      history.push("/login");
     } catch (err) {
       setLoading(false);
       if (err instanceof Yup.ValidationError) {
@@ -113,11 +114,18 @@ const CreateAccountForm: React.FC = () => {
         icon={AiFillLock}
         placeholder="Confirmação de senha"
       />
-      <ButtonPrimary
-        type="submit"
+      <ButtonGeneric
         title="Continuar"
-        _width="100%"
-        loading={loading}
+        type="submit"
+        _padding="15px 25px"
+        _fSize="18px"
+        _marTop="40px"
+        _bgColor="#D8D8D8"
+        _color="#9B9B9B"
+        _colorHover="#FFFFFF"
+        _bgHover="#8C52E5"
+        _loading={loading}
+        icon={FiChevronRight}
       />
     </Form>
   );

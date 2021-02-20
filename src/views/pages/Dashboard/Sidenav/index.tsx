@@ -1,17 +1,16 @@
 import React from 'react';
-import { Container } from './style';
-import img from '../../../img/5b2d2ad9768f2 1.png'
-import pix from '../../../img/Pix.png'
 import { Link } from "react-router-dom";
 
 
-// import { Container } from './styles';
+import img from '../../../../assets/5b2d2ad9768f2 1.png'
+import pix from '../../../../assets/Pix.png'
+import { Container } from './style';
+
 
 const SideNav: React.FC = () => {
   return (
       <>
       <Container>
-          <div className="div-SideNav">
               <img src={img} alt="logo-gama"/>
                 <div className="menu-option">
                      <Link className="link" to="/deposit">
@@ -39,7 +38,6 @@ const SideNav: React.FC = () => {
                 </Link>
 
               </div>
-          </div>
       </Container>
 
       </>

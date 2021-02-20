@@ -1,13 +1,13 @@
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div `
 
     background: #63dc3f;
     flex-direction: column;
     height: 100vh;
-    width: 100%;
+    width: 160px;
+    align-items: center;
 
-  
     .div-menu{
         display: flex;
         align-items: center;
@@ -25,14 +25,14 @@ export const Container = styled.div `
 
     .menu-option{
         width: 70%;
-        height: 15vh;
+        height: 14vh;
         background-color: #8C52E5;
         margin-bottom: 40px;
         display:flex;
         flex-direction: column;
         color: white;
         border-radius: 6px;
-        justify-content: inherit;
+        margin-left: 15px;
 
         p{
             font-size: 1vw;
@@ -41,10 +41,10 @@ export const Container = styled.div `
         }
 
         .pix{
-            width: 28%;
-            height: 50%;
+            width: 30px;
+            height: 30px;
             margin-left: 10px;
-
+            margin-bottom: 15px;
         }
         a {
             text-decoration: none;

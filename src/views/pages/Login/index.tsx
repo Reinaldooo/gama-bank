@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, {useRef, useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 import api from "../../../services/api";
 import WhiteCardGeneric from "../../components/WhiteCardGeneric";
@@ -10,6 +10,7 @@ import * as Yup from "yup";
 import { Form } from "@unform/web";
 import { useToast } from "../../../context/toastContext";
 import getValidationErrors from "../../../utils/getValidationErrors";
+import ButtonGeneric from "../../components/ButtonGeneric";
 
 interface LoginForm {
   login: string;
@@ -20,6 +21,7 @@ const Login: React.FC = () => {
   const { addToast } = useToast();
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
+  const [loading, setLoading] = useState(false);
 
   async function loginSysGama(data: LoginForm) {
     const { login, passwd } = data;
@@ -39,6 +41,8 @@ const Login: React.FC = () => {
         usuario: login,
         senha: passwd,
       };
+
+      setLoading(true);
 
       await api.post(`login`, postData).then((response) => {
         console.log(response.data);
@@ -61,6 +65,7 @@ const Login: React.FC = () => {
         });
         return;
       }
+      setLoading(false);
       addToast({
         title: "Ops, algo deu errado!",
         type: "error",
@@ -84,10 +89,7 @@ const Login: React.FC = () => {
               type="password"
               placeholder="Digite a sua senha"
             />
-            <button className="button-login" title="Continuar" type="submit">
-              Continuar <FiChevronRight size={21} />
-            </button>
-
+            <ButtonGeneric title="Continuar" type="submit" _colorHover="#FFFFFF" _bgHover="#8C52E5" icon={FiChevronRight} _loading={loading} />
             <div className="form-links">
               <Link to="/forgot-passwd">
                 Esqueci Minha Senha <FiChevronRight size={14} />
