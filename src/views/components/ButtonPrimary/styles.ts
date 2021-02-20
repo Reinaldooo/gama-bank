@@ -1,13 +1,20 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 //
-import { mainGreen, mainPurple } from "../../../styles";
+import { mainGreen, mainPurple, bounceX } from "../../../styles";
 
 interface ButtonProps {
   _width?: string;
   _marTop?: string;
+  loading?: boolean;
 }
 
 export const Button = styled.button<ButtonProps>`
+  animation: ${(props) =>
+    props.loading
+      ? css`
+          ${bounceX} 1s infinite
+        `
+      : null};
   width: ${(props) => (props._width ? props._width : "60%")};
   margin-top: ${(props) => (props._marTop ? props._marTop : 0)};
   background-color: #fff;

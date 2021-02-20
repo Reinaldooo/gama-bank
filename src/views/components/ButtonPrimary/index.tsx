@@ -6,21 +6,29 @@ import rightArrow from "../../../assets/right-arrow.png";
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   title: string;
   _width?: string;
+  loading?: boolean;
 };
 
-const SectionA: React.FC<ButtonProps> = ({ title, _width, ...rest }) => {
+const ButtonPrimary: React.FC<ButtonProps> = ({
+  title,
+  _width,
+  loading,
+  ...rest
+}) => {
   return (
     <S.Button
       type="button"
       className="button-primary"
       _width={_width}
       _marTop="2.5rem"
+      loading={loading || undefined}
+      disabled={loading}
       {...rest}
     >
-      {title}
+      {loading ? "Carregando" : title}
       <img src={rightArrow} alt="" />
     </S.Button>
   );
 };
 
-export default SectionA;
+export default ButtonPrimary;
