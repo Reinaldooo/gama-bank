@@ -4,11 +4,14 @@ import styled from 'styled-components';
 export const Container = styled.div`
 
     background: white;
-    height: 50vh;
+    height: 426px;
     width: 50vw;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
+    left: 229px;
+    top: 150px;
+    position: fixed;
 
     form{
         padding: 12px;
@@ -30,6 +33,7 @@ export const Container = styled.div`
 
             h3{
                 margin-left: 30px;
+                margin-top: 15px;
             }
     }
 

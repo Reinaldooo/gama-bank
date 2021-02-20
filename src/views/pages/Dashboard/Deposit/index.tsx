@@ -2,9 +2,9 @@ import React, { FormEvent, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { IDashboardState } from '../../../../store/modules/accounts/types';
-import { Container } from './style';
-import api from '../../../../services/api'
 import ButtonGeneric from "../../../components/ButtonGeneric";
+import api from '../../../../services/api'
+import { Container } from './style';
 
 
 const Deposit: React.FC = () => {
