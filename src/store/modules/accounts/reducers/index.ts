@@ -1,11 +1,11 @@
 import {
-  DashboardState,
+  IDashboardState,
   ACCOUNT_DATA_LOADING,
   ACCOUNT_DATA_SUCCESS,
   AccountActions,
 } from "../types";
 
-const initialState: DashboardState = {
+const initialState: IDashboardState = {
   loading: true,
   accounts: null,
 };
@@ -13,7 +13,7 @@ const initialState: DashboardState = {
 export default function reducer(
   state = initialState,
   { type, payload }: AccountActions
-): DashboardState {
+): IDashboardState {
   switch (type) {
     case ACCOUNT_DATA_SUCCESS:
       return { ...state, accounts: payload, loading: false };
