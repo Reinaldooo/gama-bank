@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import api from "../../../services/api";
 import { accountDataSuccess } from "../../../store/modules/accounts/actions";
 import { IDashboardState } from "../../../store/modules/accounts/types";
+import Deposit from "./Deposit";
 import SideNav from "./Sidenav";
 
 const Dashboard: React.FC = () => {
@@ -31,10 +32,9 @@ const Dashboard: React.FC = () => {
   }, [dispatch]);
 
   return (
-      <>
+    <>
         <SideNav/>
-        {accounts?.contaBanco.saldo}
-      </>
+    </>
   );
 };
 
