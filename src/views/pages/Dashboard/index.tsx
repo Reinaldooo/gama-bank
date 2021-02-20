@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Route, Switch } from "react-router-dom";
 //
 import api from "../../../services/api";
 import { accountDataSuccess } from "../../../store/modules/accounts/actions";
@@ -34,6 +35,10 @@ const Dashboard: React.FC = () => {
   return (
     <>
         <SideNav/>
+        <Switch>
+          <Route  path="/dashboard/deposit" component={Deposit}/>
+        </Switch>
+
     </>
   );
 };

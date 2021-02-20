@@ -13,8 +13,8 @@ const Routes: React.FC = () => {
         <Switch>
             <Route path="/" exact component={Home}/>
             <Route path="/login" component={Login}/>
-            <PrivateRoute exact path="/dashboard" component={Dashboard}/>
-            <PrivateRoute  path="/dashboard/deposit" component={Deposit}/>
+            <PrivateRoute  path="/dashboard" component={Dashboard}/>
+            {/* <PrivateRoute  path="/dashboard/deposit" component={Deposit}/> */}
             {/* <PrivateRoute path="/plans" component={Dashboard}/> */}
             {/* <PrivateRoute path="/payments" component={Dashboard}/> */}
             {/* <PrivateRoute path="/transactions" component={Dashboard}/> */}
