@@ -48,7 +48,7 @@ const Login: React.FC = () => {
       addToast({
         title: "Bem-vindo!",
       });
-      history.push("/login");
+      history.push("/dashboard");
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
