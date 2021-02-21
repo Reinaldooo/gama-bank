@@ -1,21 +1,29 @@
-import React , { ComponentType } from 'react';
+import React, { ComponentType } from "react";
 
-import { Route, Redirect, RouteProps } from 'react-router-dom';
+import { Route, Redirect, RouteProps } from "react-router-dom";
 
-import { isAuthenticated } from '../services/auth'
+import { isAuth } from "../services/auth";
+
+const authDetails = isAuth();
 
 interface PrivateRouteProps extends RouteProps {
-    component: ComponentType,
+  component: ComponentType;
 }
 
-const PrivateRoute: React.FC<PrivateRouteProps> = ( { component: Component, ...rest } ) => (
-    <Route 
-        {...rest}
-        render={ (props) => 
-            isAuthenticated() ? 
-            (<Component />) : (<Redirect to={ {pathname: '/', state:{from: props.location}} } />)
-        }
-    />
-)
+const PrivateRoute: React.FC<PrivateRouteProps> = ({
+  component: Component,
+  ...rest
+}) => (
+  <Route
+    {...rest}
+    render={(props) =>
+      authDetails.token ? (
+        <Component />
+      ) : (
+        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+      )
+    }
+  />
+);
 
 export default PrivateRoute;
