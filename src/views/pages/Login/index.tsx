@@ -44,11 +44,13 @@ const Login: React.FC = () => {
 
       setLoading(true);
 
+      // This has to be reset here and re-inserted below because the login
+      // endpoint will break if the request has an old Authorization header
+      api.defaults.headers.Authorization = null;
+
       await api.post(`login`, postData).then(({ data }) => {
         localStorage.setItem("@tokenApp", data.token);
         localStorage.setItem("@userApp", data.usuario.login);
-        // This has to be updated here otherwise the app can get obselete
-        // info from the localstorage
         api.defaults.headers.Authorization = data.token;
       });
 
