@@ -253,6 +253,7 @@ export const ContainerDashboard = styled.div`
         width: 100%;
         max-width: 100%;
         height: 100%;
+        min-height: 396px;
 
         .title-account-history {
           width: 100%;

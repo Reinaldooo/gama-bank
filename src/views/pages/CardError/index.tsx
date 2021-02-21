@@ -19,7 +19,7 @@ const Login: React.FC = () => {
                         Oops, algo deu errado!<br />
                         Confime seus dados e tente novamente!
                     </p>
-                    <ButtonGeneric title="Continuar" type="submit" _colorHover="#FFFFFF" _bgHover="#8C52E5" _marTop="35px"
+                    <ButtonGeneric title="Voltar" type="submit" _colorHover="#FFFFFF" _bgHover="#8C52E5" _marTop="35px"
                                    icon={AiOutlineArrowLeft} onClick={() => history.goBack()} />
                 </CardError>
             </WhiteCardLoginRegister>

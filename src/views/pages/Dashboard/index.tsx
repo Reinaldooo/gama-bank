@@ -109,36 +109,6 @@ const Dashboard: React.FC = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="extract-account-history">
-                                    <div className="row-historic-account">
-                                        <div className="column-icon">
-                                            <img src={IconHistoryCard} alt="Icon Coin" className="account-icon-history-card"/>
-                                        </div>
-                                        <div className="column-description">
-                                            <p className="historic-text">Compra no débito</p>
-                                            <p className="description-text">GamaAcademy</p>
-                                            <p className="value-text">R$: 298,55</p>
-                                        </div>
-                                        <div className="column-date">
-                                            <p className="date-text">Dia  24 de Jan.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="extract-account-history">
-                                    <div className="row-historic-account">
-                                        <div className="column-icon">
-                                            <img src={IconHistoryCard} alt="Icon Coin" className="account-icon-history-card"/>
-                                        </div>
-                                        <div className="column-description">
-                                            <p className="historic-text">Compra no débito</p>
-                                            <p className="description-text">GamaAcademy</p>
-                                            <p className="value-text">R$: 298,55</p>
-                                        </div>
-                                        <div className="column-date">
-                                            <p className="date-text">Dia  24 de Jan.</p>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </WhiteCardDash>
                     </div>
