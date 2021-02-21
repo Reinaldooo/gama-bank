@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import api from "../../../services/api";
 import WhiteCardGeneric from "../../components/WhiteCardGeneric";
@@ -44,9 +44,12 @@ const Login: React.FC = () => {
 
       setLoading(true);
 
-      await api.post(`login`, postData).then((response) => {
-        console.log(response.data);
-        localStorage.setItem("@tokenApp", response.data.token);
+      await api.post(`login`, postData).then(({ data }) => {
+        localStorage.setItem("@tokenApp", data.token);
+        localStorage.setItem("@userApp", data.usuario.login);
+        // This has to be updated here otherwise the app can get obselete
+        // info from the localstorage
+        api.defaults.headers.Authorization = data.token;
       });
 
       addToast({
@@ -89,7 +92,14 @@ const Login: React.FC = () => {
               type="password"
               placeholder="Digite a sua senha"
             />
-            <ButtonGeneric title="Continuar" type="submit" _colorHover="#FFFFFF" _bgHover="#8C52E5" icon={FiChevronRight} _loading={loading} />
+            <ButtonGeneric
+              title="Continuar"
+              type="submit"
+              _colorHover="#FFFFFF"
+              _bgHover="#8C52E5"
+              icon={FiChevronRight}
+              _loading={loading}
+            />
             <div className="form-links">
               <Link to="/forgot-passwd">
                 Esqueci Minha Senha <FiChevronRight size={14} />
