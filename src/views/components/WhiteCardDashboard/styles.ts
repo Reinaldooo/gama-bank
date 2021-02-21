@@ -9,7 +9,7 @@ export const WhiteCardDashboard = styled.div<ContainerCardDash>`
   background: #FBFBFB;
   border-radius: 8px;
   width: 100%;
-  padding: 40px;
+  padding: 20px 40px;
   max-width: ${(props => (props._maxWidth))};
   height: ${(props => (props._Height))};
 

@@ -32,8 +32,8 @@ const Login: React.FC = () => {
       formRef.current?.setErrors({});
 
       const schema = Yup.object({
-        login: Yup.string().min(5).required("Cpf obrigatório."),
-        passwd: Yup.string().required("Campo obrigatório"),
+        login: Yup.string().min(5).required("Insira seu Login"),
+        passwd: Yup.string().required("Digite a sua senha"),
       });
 
       await schema.validate(data, { abortEarly: false });
