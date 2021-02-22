@@ -30,7 +30,7 @@ export interface Accounts {
   contaCredito: Conta;
 }
 
-export interface DashboardState {
+export interface IDashboardState {
   loading: boolean;
   accounts: Accounts | null;
 }

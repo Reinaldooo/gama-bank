@@ -13,7 +13,7 @@ const SideNav: React.FC = () => {
             <Container>
                 <img src={img} className="logo-gama-bank" alt="logo-gama"/>
                 <div className="menu-option">
-                    <Link className="link" to="/deposit">
+                    <Link className="link" to="/dashboard/deposit">
                         <img className="pix" src={pix} alt="dep"/>
                         <p>Depositos</p>
                     </Link>

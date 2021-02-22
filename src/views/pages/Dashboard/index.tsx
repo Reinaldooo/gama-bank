@@ -11,6 +11,7 @@ import IconHistoryCard from "../../../assets/icon-history-card.png"
 import {ContainerDashboard} from "./styles"
 import {Route, Switch} from "react-router-dom";
 import SummaryCards from "../../components/SummaryCards";
+import Deposit from "./Deposit";
 
 const Dashboard: React.FC = () => {
     const dispatch = useDispatch();
@@ -55,6 +56,7 @@ const Dashboard: React.FC = () => {
                     <div className="cards-row">
                         <Switch>
                             <Route path="/dashboard" exact component={SummaryCards}/>
+                            <Route path="/dashboard/deposit" component={Deposit}/>
                         </Switch>
                     </div>
                     <div className="cards-row last">
