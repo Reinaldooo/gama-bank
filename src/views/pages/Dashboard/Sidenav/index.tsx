@@ -1,7 +1,5 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-
-
 import img from '../../../../assets/5b2d2ad9768f2 1.png'
 import pix from '../../../../assets/Pix.png'
 import {Container} from './style';
