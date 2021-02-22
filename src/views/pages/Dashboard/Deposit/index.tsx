@@ -1,11 +1,8 @@
 import React, { FormEvent, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
-import { IDashboardState } from '../../../../store/modules/accounts/types';
 import ButtonGeneric from "../../../components/ButtonGeneric";
 import api from '../../../../services/api'
 import { Container } from './style';
-import { WhiteCardDashboard } from '../../../components/WhiteCardDashboard/styles';
 import WhiteCardDash from '../../../components/WhiteCardDashboard';
 
 
@@ -14,10 +11,8 @@ const Deposit: React.FC = () => {
     const [date, setDate] = useState('')
     const [description, setDescription] = useState('')
     const [valuer, setValuer ] = useState('')
-    const [loading, setLoading] = useState(false);
 
     const history = useHistory()
-    const accounts = useSelector((state: IDashboardState) => state.accounts);
 
     function transfer (event: FormEvent<HTMLFormElement>){
         event.preventDefault()
@@ -63,8 +58,7 @@ const Deposit: React.FC = () => {
             title="Realizar deposito agora" 
             type="submit" 
             _colorHover="#FFFFFF" 
-            _bgHover="#3da131" 
-            _loading={loading} />
+            _bgHover="#3da131" />
         </form>
       </WhiteCardDash>
     </Container>
