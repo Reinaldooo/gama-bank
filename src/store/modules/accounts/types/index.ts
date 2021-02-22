@@ -1,7 +1,12 @@
 export const ACCOUNT_DATA_SUCCESS: string = "ACCOUNT_DATA_SUCCESS";
 export const ACCOUNT_DATA_LOADING: string = "ACCOUNT_DATA_LOADING";
+export const ACCOUNT_DATA_ERROR: string = "ACCOUNT_DATA_ERROR";
+export const TRANSACTION_TYPES_SUCCESS: string = "TRANSACTION_TYPES_SUCCESS";
+export const TRANSACTION_ERROR: string = "TRANSACTION_ERROR";
+export const DEBIT_TRANSACTION_SUCCESS: string = "DEBIT_TRANSACTION_SUCCESS";
+export const CREDIT_TRANSACTION_SUCCESS: string = "CREDIT_TRANSACTION_SUCCESS";
 
-interface PlanoConta {
+export interface IPlanoConta {
   id: number;
   login: string;
   descricao: string;
@@ -9,40 +14,59 @@ interface PlanoConta {
   tipoMovimento: string;
 }
 
-interface Lancamento {
+export interface ILancamento {
   id: number;
   conta: number;
   data: string;
   descricao: string;
   tipo: string;
   valor: number;
-  planoConta: PlanoConta;
+  planoConta: IPlanoConta;
 }
 
-interface Conta {
+export interface ILancamentoRedux {
+  id: string;
+  conta: number;
+  contaDestino?: string;
+  data: string;
+  descricao: string;
+  login: string;
+  planoConta: number;
+  valor: number;
+}
+
+export interface IConta {
   id: number;
   saldo: number;
-  lancamentos: Lancamento[];
 }
 
-export interface Accounts {
-  contaBanco: Conta;
-  contaCredito: Conta;
+export interface IAccounts {
+  contaBanco: IConta | null;
+  contaCredito: IConta | null;
+}
+
+export interface ITransactionTypes {
+  [key: string]: IPlanoConta;
 }
 
 export interface IDashboardState {
+  fetchAccountsError: boolean;
+  transactionError: boolean;
   loading: boolean;
-  accounts: Accounts | null;
+  debitAccount: IConta | null;
+  creditAccount: IConta | null;
+  debitTransactions: ILancamento[] | null;
+  creditTransactions: ILancamento[] | null;
+  transactionTypes: ITransactionTypes | null;
 }
 
-interface AccountsDataSuccess {
-  type: typeof ACCOUNT_DATA_SUCCESS;
-  payload: Accounts;
+export interface IAction {
+  type:
+    | typeof ACCOUNT_DATA_SUCCESS
+    | typeof ACCOUNT_DATA_LOADING
+    | typeof ACCOUNT_DATA_ERROR
+    | typeof DEBIT_TRANSACTION_SUCCESS
+    | typeof CREDIT_TRANSACTION_SUCCESS
+    | typeof TRANSACTION_ERROR;
+  payload?: any;
 }
-
-interface AccountsDataLoading {
-  type: typeof ACCOUNT_DATA_LOADING;
-  payload: null;
-}
-
-export type AccountActions = AccountsDataSuccess | AccountsDataLoading;

@@ -52,8 +52,9 @@ const PasswordPage: React.FC = () => {
 
       const { data: senhaTemporaria } = await api.post('nova-senha', {
           email : "email@dominio.com",
-          usuario: user,
+          login: user,
       })
+      console.log(senhaTemporaria)
       await api.post(`altera-senha`, postData, {params: {senhaTemporaria}});
 
       addToast({
