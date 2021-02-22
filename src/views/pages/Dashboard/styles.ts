@@ -39,7 +39,7 @@ export const ContainerDashboard = styled.div`
         padding-bottom: 0;
       }
     }
-    
+
     .cards-row {
       width: 100%;
       max-width: 1000px;
@@ -112,10 +112,12 @@ export const ContainerDashboard = styled.div`
 
             @media (min-width: 0) and (max-width: 767px) {
               margin-bottom: 20px;
+              text-align: center;
             }
 
             @media (min-width: 768px) and (max-width: 991px) {
               margin-bottom: 20px;
+              text-align: center;
             }
           }
 
@@ -227,7 +229,7 @@ export const ContainerDashboard = styled.div`
               width: 100%;
             }
           }
-          
+
           .row-historic-account {
             width: 100%;
             max-width: 100%;
@@ -237,7 +239,7 @@ export const ContainerDashboard = styled.div`
             & + div {
               padding-top: 25px;
             }
-            
+
             .column-icon {
               width: 100%;
               max-width: 34px;
@@ -249,12 +251,13 @@ export const ContainerDashboard = styled.div`
               @media (min-width: 768px) and (max-width: 991px) {
                 display: none;
               }
-              
+
               .account-icon-history-card {
                 width: 100%;
                 max-width: 34px;
               }
             }
+
             .column-description {
               width: 100%;
               max-width: 724px;
@@ -304,7 +307,7 @@ export const ContainerDashboard = styled.div`
                 padding-top: 1px;
                 max-width: 76px;
               }
-              
+
               .date-text {
                 font-size: 12px;
                 font-weight: 400;

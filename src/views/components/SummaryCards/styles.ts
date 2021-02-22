@@ -6,6 +6,7 @@ export const SummaryCardsDashboard = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-flow: row wrap;
   
   .section-account {
     width: 100%;
