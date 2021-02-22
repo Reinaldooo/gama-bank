@@ -33,10 +33,12 @@ export const ContainerCard = styled.section`
       }
 
       .subtitulo-card {
-        font-weight: 700;
-        font-size: 20px;
+        font-weight: 400;
+        font-size: 14px;
         text-align: center;
         margin-bottom: 20px;
+
+        opacity: 0.5;
       }
     }
   }

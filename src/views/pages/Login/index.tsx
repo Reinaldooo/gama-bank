@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import api from "../../../services/api";
 import WhiteCardGeneric from "../../components/WhiteCardGeneric";
 import InputPrimary from "../../components/InputPrimary";
+import Header from "../../components/Header"
 import { FiChevronRight } from "react-icons/fi";
 import { FormLogin } from "./styles";
 import { FormHandles } from "@unform/core";
@@ -76,6 +77,7 @@ const Login: React.FC = () => {
 
   return (
     <>
+      <Header/>
       <WhiteCardGeneric title="Faça seu login" subtitle={null}>
         <FormLogin>
           <Form ref={formRef} onSubmit={loginSysGama}>
