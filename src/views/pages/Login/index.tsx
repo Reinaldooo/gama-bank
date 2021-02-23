@@ -11,6 +11,7 @@ import { Form } from "@unform/web";
 import { useToast } from "../../../context/toastContext";
 import getValidationErrors from "../../../utils/getValidationErrors";
 import ButtonGeneric from "../../components/ButtonGeneric";
+import Header from "../../components/Header";
 
 interface LoginForm {
   login: string;
@@ -81,6 +82,7 @@ const Login: React.FC = () => {
 
   return (
     <>
+      <Header />
       <WhiteCardLoginRegister title="Faça seu login" subtitle={null}>
         <FormLogin>
           <Form ref={formRef} onSubmit={loginSysGama}>

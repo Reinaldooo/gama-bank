@@ -104,7 +104,7 @@ const PasswordPage: React.FC = () => {
               icon={AiFillLock}
               placeholder="Confirme sua nova senha"
             />
-            <ButtonGeneric title="Enviar" type="submit" _colorHover="#FFFFFF" _bgHover="#8C52E5" icon={FiChevronRight} _loading={loading} />
+            <ButtonGeneric title="Enviar" type="submit" _colorHover="#FFFFFF" _bgHover="#8C52E5" icon={FiChevronRight} _loading={loading} _marTop="10px" />
           </Form>
         </FormPassword>
       </WhiteCardLoginRegister>

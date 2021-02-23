@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <S.Header>
             <Link to="/" href="/">
-                <img src={gamaLogo} alt="logo"/>
+                <img src={gamaLogo} alt="logo" className="logo-gama"/>
             </Link>
         </S.Header>
     )
