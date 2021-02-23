@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useToast } from "../../../context/toastContext";
 //
 import api from "../../../services/api";
@@ -19,6 +19,8 @@ import {ContainerDashboard} from "./styles"
 import {Route, Switch} from "react-router-dom";
 import SummaryCards from "../../components/SummaryCards";
 import Deposit from "./Deposit";
+import { FiChevronLeft } from "react-icons/fi";
+import Transfer from "./Transfer";
 
 const Dashboard: React.FC = () => {
   const dispatch = useDispatch();
@@ -86,6 +88,7 @@ const Dashboard: React.FC = () => {
                         <Switch>
                             <Route path="/dashboard" exact component={SummaryCards}/>
                             <Route path="/dashboard/deposit" component={Deposit}/>
+                            <Route path="/dashboard/transfer" component={Transfer}/>
                         </Switch>
                     </div>
                     <div className="cards-row last">
@@ -118,7 +121,6 @@ const Dashboard: React.FC = () => {
                     </div>
                 </div>
             </ContainerDashboard>
-
         </>
     )
 }

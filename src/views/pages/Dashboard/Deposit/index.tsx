@@ -1,9 +1,10 @@
-import React, {FormEvent, useState} from 'react';
-import {useHistory} from "react-router-dom";
+import React, { FormEvent, useState } from 'react';
+import { Link, useHistory } from "react-router-dom";
 import ButtonGeneric from "../../../components/ButtonGeneric";
 import api from '../../../../services/api'
-import {Container} from './style';
+import { Container, Header } from './style';
 import WhiteCardDash from '../../../components/WhiteCardDashboard';
+import { FiChevronLeft } from 'react-icons/fi';
 
 
 const Deposit: React.FC = () => {
@@ -14,7 +15,7 @@ const Deposit: React.FC = () => {
 
     const history = useHistory()
 
-    function transfer(event: FormEvent<HTMLFormElement>) {
+    function deposit (event: FormEvent<HTMLFormElement>){
         event.preventDefault()
 
         const postData = {
@@ -45,29 +46,29 @@ const Deposit: React.FC = () => {
         }
     }
 
-    return (
-
-        <Container>
-            <WhiteCardDash _maxWidth="100%">
-                <div className="form-deposit">
-                    <form onSubmit={transfer}>
-                        <h3>Realize seu depósito</h3>
-                        <input value={date} onChange={e => setDate(e.target.value)} type="date"
-                               placeholder="Data"></input>
-                        <input value={description} onChange={e => setDescription(e.target.value)} type="text"
-                               placeholder="Descrição"></input>
-                        <input value={valuer} onChange={e => setValuer(e.target.value)} type="number"
-                               placeholder="Valor do deposito"></input>
-                        <ButtonGeneric
-                            title="Realizar deposito agora"
-                            type="submit"
-                            _colorHover="#FFFFFF"
-                            _bgHover="#3da131"/>
-                    </form>
-                </div>
-            </WhiteCardDash>
-        </Container>
-
+  return (
+    
+    <Container>
+      <Header>
+        <Link to="/dashboard"> <FiChevronLeft size={30}/>Voltar</Link>
+      </Header>
+      <WhiteCardDash _maxWidth="100%">
+          <div className="form-deposit">
+            <form onSubmit={deposit}>
+                <h3>Realize seu depósito</h3>
+                <input value={date} onChange={ e => setDate( e.target.value) } type="date" placeholder="Data"></input>
+                <input value={description} onChange={ e => setDescription( e.target.value) } type="text" placeholder="Descrição"></input>
+                <input value={valuer} onChange={ e => setValuer( e.target.value) } type="number" placeholder="Valor do deposito"></input>
+                <ButtonGeneric 
+                title="Realizar deposito agora" 
+                type="submit" 
+                _colorHover="#FFFFFF" 
+                _bgHover="#3da131" />
+            </form>
+          </div>
+      </WhiteCardDash>
+    </Container>
+  
     );
 }
 

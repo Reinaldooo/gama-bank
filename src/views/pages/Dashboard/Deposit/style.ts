@@ -1,5 +1,20 @@
 import styled from 'styled-components';
 
+export const Header = styled.header `
+    a{
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #FFFF;
+        transition: color 0.2s;
+        &:hover{
+            color:  #63dc3f;
+        }
+        svg{
+            margin-right: 4px;
+        }
+    }
+`
 
 export const Container = styled.div`
 

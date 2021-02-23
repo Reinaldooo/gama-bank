@@ -17,20 +17,20 @@ const SideNav: React.FC = () => {
                     </Link>
                 </div>
                 <div className="menu-option">
-                    <Link className="link" to="/plans">
+                    <Link className="link" to="/dashboard/plans">
                         <img className="pix" src={pix} alt="plan"/>
                         <p>Planos</p>
                     </Link>
 
                 </div>
                 <div className="menu-option">
-                    <Link to="/payments">
+                    <Link to="/dashboard/payments">
                         <img className="pix" src={pix} alt="payment"/>
                         <p>Pagamentos</p>
                     </Link>
                 </div>
                 <div className="menu-option">
-                    <Link to="/transactions">
+                    <Link to="/dashboard/transfer">
                         <img className="pix" src={pix} alt="transaction"/>
                         <p>Transações</p>
                     </Link>
