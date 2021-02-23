@@ -186,7 +186,7 @@ export const ContainerDashboard = styled.div`
             justify-content: flex-start;
             align-items: center;
 
-            .text-historic-account {
+            .text-historic-account, .text-historic-account {
               color: #9B9B9B;
               font-size: 18px;
               font-weight: 400;
@@ -194,130 +194,17 @@ export const ContainerDashboard = styled.div`
               margin-left: 20px;
             }
 
-            .account-icon-coin {
-              max-width: 38px;
-              width: 100%;
-            }
-          }
-        }
-
-        .extract-account-history {
-          width: 100%;
-          max-width: 100%;
-          margin-top: 45px;
-          display: flex;
-          justify-content: flex-start;
-          align-items: flex-start;
-          flex-flow: row wrap;
-
-          .title-historic-account {
-            display: flex;
-            flex-flow: row;
-            justify-content: flex-start;
-            align-items: center;
-
             .text-historic-account {
-              color: #9B9B9B;
-              font-size: 18px;
-              font-weight: 400;
-              text-align: left;
-              margin-left: 20px;
+              margin: 40px 20px;
             }
 
             .account-icon-coin {
               max-width: 38px;
               width: 100%;
-            }
-          }
-
-          .row-historic-account {
-            width: 100%;
-            max-width: 100%;
-            display: flex;
-            justify-content: space-between;
-
-            & + div {
-              padding-top: 25px;
-            }
-
-            .column-icon {
-              width: 100%;
-              max-width: 34px;
-
-              @media (min-width: 0) and (max-width: 767px) {
-                display: none;
-              }
-
-              @media (min-width: 768px) and (max-width: 991px) {
-                display: none;
-              }
-
-              .account-icon-history-card {
-                width: 100%;
-                max-width: 34px;
-              }
-            }
-
-            .column-description {
-              width: 100%;
-              max-width: 724px;
-
-              @media (min-width: 992px) and (max-width: 1199px) {
-                margin-left: 22px;
-              }
-
-              .historic-text {
-                font-size: 16px;
-                font-weight: 700;
-                color: #000000;
-
-                @media (min-width: 0) and (max-width: 767px) {
-                  font-size: 14px;
-                }
-              }
-
-              .description-text {
-                margin-top: 5px;
-                font-size: 18px;
-                font-weight: 400;
-                color: #9B9B9B;
-
-                @media (min-width: 0) and (max-width: 767px) {
-                  font-size: 16px;
-                }
-              }
-
-              .value-text {
-                margin-top: 13px;
-                font-size: 20px;
-                font-weight: 500;
-                color: #000000;
-
-                @media (min-width: 0) and (max-width: 767px) {
-                  font-size: 18px;
-                }
-              }
-            }
-
-            .column-date {
-              width: 100%;
-              max-width: 76px;
-
-              @media (min-width: 0) and (max-width: 767px) {
-                padding-top: 1px;
-                max-width: 76px;
-              }
-
-              .date-text {
-                font-size: 12px;
-                font-weight: 400;
-                color: #9B9B9B;
-              }
             }
           }
         }
       }
     }
-  }
 }
 `
