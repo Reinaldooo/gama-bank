@@ -3,7 +3,7 @@ import React from "react";
 import { Container } from "./style";
 import IconHistoryCard from "../../../../assets/icon-history-card.png";
 import { ILancamento } from "../../../../store/modules/accounts/types";
-import { formatBRL } from "../../../../utils/formatter";
+import { formatBRL, formatDate } from "../../../../utils/formatter";
 
 interface ITransactionsMap {
   [key: string]: string;
@@ -25,6 +25,7 @@ const TransactionCard: React.FC<ITransactionCardProps> = ({
   data,
 }) => {
   const formattedValue = formatBRL(valor);
+  const formattedDate = formatDate(data);
 
   return (
     <Container>
@@ -49,7 +50,7 @@ const TransactionCard: React.FC<ITransactionCardProps> = ({
             </p>
           </div>
           <div className="column-date">
-            <p className="date-text">{data}</p>
+            <p className="date-text">{formattedDate}</p>
           </div>
         </div>
       </div>
