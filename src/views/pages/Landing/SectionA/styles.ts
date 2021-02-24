@@ -9,24 +9,12 @@ export const Container = styled.section`
   background: url(${happy}) no-repeat center bottom;
   background-size: 45%;
   float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   @media screen and (max-width: 991px) {
     background: none;
-  }
-`;
-
-export const Header = styled.header`
-  padding: 2rem;
-
-  & a {
-    border: none;
-    outline: none;
-  }
-
-  & img {
-    @media screen and (max-width: 768px) {
-      height: 50px;
-    }
   }
 `;
 
@@ -35,7 +23,8 @@ export const Content = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   color: #fff;
   font-weight: 400;
 
@@ -58,6 +47,10 @@ export const Content = styled.div`
     @media screen and (max-width: 991px) {
       flex: 0 0 80%;
       margin: 2rem auto;
+      justify-content: center;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
     }
   }
 `;
@@ -74,6 +67,18 @@ export const LeftContent = styled.div`
     display: block;
     font-size: 2rem;
     margin-bottom: 1.3rem;
+  }
+  
+  .m-top {
+    @media (min-width: 0) and (max-width: 767px) {
+      margin-top: 140px;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      margin-top: 140px;
+      text-align: center;
+    }
   }
 `;
 
