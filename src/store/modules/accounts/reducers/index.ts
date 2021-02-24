@@ -30,14 +30,14 @@ function calculaSaldo(
   saldo: number,
   isDebit?: boolean
 ): number {
-  switch (lancamento.planoConta) {
-    case 838:
+  switch (lancamento.planoConta.tipoMovimento) {
+    case "R":
       // Deposit my account
       return saldo + lancamento.valor;
-    case 841:
+    case "TU":
       // Transfer to other user
       return saldo - lancamento.valor;
-    case 840:
+    case "TC":
       // Transfer from my bank to credit
       if (isDebit) {
         // As this function will be called in both accounts, on the 'bank' it
@@ -46,14 +46,15 @@ function calculaSaldo(
       }
       return saldo + lancamento.valor;
     default:
-      return saldo;
+      return saldo + lancamento.valor;
   }
 }
 
 function checkNegativeValue(lancamento: ILancamentoRedux): number {
   // Is this two cases the money is leaving the account, so it should be negative
   const isNegative =
-    lancamento.planoConta === 840 || lancamento.planoConta === 841;
+    lancamento.planoConta.tipoMovimento === "TC" ||
+    lancamento.planoConta.tipoMovimento === "TU";
 
   if (isNegative) return lancamento.valor * -1;
   return lancamento.valor;
@@ -63,7 +64,6 @@ export default function reducer(
   state = initialState,
   { type, payload }: IAction
 ): IDashboardState {
-  let planoConta;
   switch (type) {
     case ACCOUNT_DATA_SUCCESS:
       // The state is being flattened as much as possible to make it safer and
@@ -93,7 +93,9 @@ export default function reducer(
     case TRANSACTION_TYPES_SUCCESS:
       // Create a id indexed object to make it faster to access it later
       const tTypes: ITransactionTypes = {};
-      payload.forEach((type: IPlanoConta) => (tTypes[type.id] = type));
+      payload.forEach(
+        (type: IPlanoConta) => (tTypes[type.tipoMovimento] = type)
+      );
       return {
         ...state,
         transactionTypes: tTypes,
@@ -103,7 +105,6 @@ export default function reducer(
       return { ...state, transactionError: true };
 
     case DEBIT_TRANSACTION_SUCCESS:
-      planoConta = state.transactionTypes![payload.planoConta];
       return {
         ...state,
         transactionError: false,
@@ -115,17 +116,13 @@ export default function reducer(
           ...state.debitTransactions!,
           {
             ...payload,
-            // payload.planoConta gets here as a number, thats why the logic
-            // above was created to turn it into the real obj
-            planoConta,
             valor: checkNegativeValue(payload),
-            tipo: planoConta.tipoMovimento,
+            tipo: payload.planoConta.tipoMovimento,
           },
         ],
       };
 
     case CREDIT_TRANSACTION_SUCCESS:
-      planoConta = state.transactionTypes![payload.planoConta];
       return {
         ...state,
         transactionError: false,
@@ -137,13 +134,10 @@ export default function reducer(
           ...state.creditTransactions!,
           {
             ...payload,
-            // payload.planoConta gets here as a number, thats why the logic
-            // above was created to turn it into the real obj
-            planoConta,
             // In the payload 'conta' will be the debit account, but it should
             // be the credit one
             conta: state.creditAccount!.id,
-            tipo: planoConta.tipoMovimento,
+            tipo: payload.planoConta.tipoMovimento,
           },
         ],
       };

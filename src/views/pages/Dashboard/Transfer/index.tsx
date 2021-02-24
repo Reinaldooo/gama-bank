@@ -25,7 +25,7 @@ const Transfer: React.FC = () => {
             conta: "675",
             data: date,
             descricao: description,
-            login: isAuth().user,
+            login: isAuth().login,
             valor: valuer,
             planoConta: type 
         } : {
@@ -33,7 +33,7 @@ const Transfer: React.FC = () => {
             contaDestino: recipient,
             data: date,
             descricao: description,
-            login: isAuth().user,
+            login: isAuth().login,
             valor: valuer,
             planoConta: type 
         }

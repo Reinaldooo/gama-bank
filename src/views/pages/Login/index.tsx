@@ -51,7 +51,8 @@ const Login: React.FC = () => {
 
       await api.post(`login`, postData).then(({ data }) => {
         localStorage.setItem("@tokenApp", data.token);
-        localStorage.setItem("@userApp", data.usuario.login);
+        localStorage.setItem("@loginApp", data.usuario.login);
+        localStorage.setItem("@userNameApp", data.usuario.nome.split(" ")[0]);
         api.defaults.headers.Authorization = data.token;
       });
 
