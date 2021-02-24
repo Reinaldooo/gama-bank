@@ -5,6 +5,7 @@ export const TRANSACTION_TYPES_SUCCESS: string = "TRANSACTION_TYPES_SUCCESS";
 export const TRANSACTION_ERROR: string = "TRANSACTION_ERROR";
 export const DEBIT_TRANSACTION_SUCCESS: string = "DEBIT_TRANSACTION_SUCCESS";
 export const CREDIT_TRANSACTION_SUCCESS: string = "CREDIT_TRANSACTION_SUCCESS";
+export const TOGGLE_TRANSACTION_VISIBILITY: string = "TOGGLE_TRANSACTION_VISIBILITY";
 
 export interface IPlanoConta {
   id: number;
@@ -31,7 +32,7 @@ export interface ILancamentoRedux {
   data: string;
   descricao: string;
   login: string;
-  planoConta: number;
+  planoConta: IPlanoConta;
   valor: number;
 }
 
@@ -58,6 +59,7 @@ export interface IDashboardState {
   debitTransactions: ILancamento[] | null;
   creditTransactions: ILancamento[] | null;
   transactionTypes: ITransactionTypes | null;
+  hideInfo: boolean
 }
 
 export interface IAction {

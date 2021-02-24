@@ -1,34 +1,37 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useToast } from "../../../context/toastContext";
+import { Route, Switch } from "react-router-dom";
 //
 import api from "../../../services/api";
 import { isAuth } from "../../../services/auth";
 import {
   accountDataSuccess,
+  toggleTransactionVisibility,
   transactionTypesSuccess,
 } from "../../../store/modules/accounts/actions";
 import { IDashboardState } from "../../../store/modules/accounts/types";
 import SideNav from "./Sidenav";
 import WhiteCardDash from "../../components/WhiteCardDashboard";
-import IconHidden from "../../../assets/icon-hidden.png"
-import IconCoin from "../../../assets/icon-coin.png"
-import IconHistoryCard from "../../../assets/icon-history-card.png"
-import {ContainerDashboard} from "./styles"
-import {Route, Switch} from "react-router-dom";
+import IconHidden from "../../../assets/icon-hidden.png";
+import IconCoin from "../../../assets/icon-coin.png";
+import { ContainerDashboard } from "./styles";
 import SummaryCards from "../../components/SummaryCards";
 import Deposit from "./Deposit";
-import { FiChevronLeft } from "react-icons/fi";
 import Transfer from "./Transfer";
+import MoneyLoader from "../../components/MoneyLoader";
+import TransactionCard from "./TransactionCard";
+import HidableValue from "../../components/HidableValue";
 import Plans from "./Plans";
 
 const Dashboard: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { addToast } = useToast();
-  const accounts = useSelector((state: IDashboardState) => state);
-  console.log(accounts);
+  const { loading, debitTransactions, hideInfo } = useSelector(
+    (state: IDashboardState) => state
+  );
 
   useEffect(() => {
     async function getApiInfo() {
@@ -37,13 +40,13 @@ const Dashboard: React.FC = () => {
           params: {
             inicio: "2021-01-01",
             fim: "2021-01-31",
-            login: isAuth().user,
+            login: isAuth().login,
           },
         });
         dispatch(accountDataSuccess(accounts));
 
         const { data: tTypes } = await api.get("/lancamentos/planos-conta", {
-          params: { login: isAuth().user },
+          params: { login: isAuth().login },
         });
         dispatch(transactionTypesSuccess(tTypes));
       } catch (err) {
@@ -61,70 +64,97 @@ const Dashboard: React.FC = () => {
           type: "error",
           title: "Ops, algo deu errado! Tente novamente.",
         });
-      };
+      }
     }
-      getApiInfo();
-    }, [dispatch, addToast, history]);
+    getApiInfo();
+  }, [dispatch, addToast, history]);
 
-    return (
-        <>
-            <SideNav/>
-            <ContainerDashboard>
-                <div className="div-row">
-                    <div className="cards-row">
-                        <div className="container-header">
-                            <div className="bloco-welcome-hide-data">
-                                <p className="texto-welcome">Olá <strong>Usuário</strong>, seja bem vindo!</p>
-                            </div>
-                            <div className="bloco-welcome-hide-data">
-                                <div className="circle-icon-hidden-show">
-                                    <img src={IconHidden} alt="Icon Hidden" className="icon-hidden-show"/>
-                                </div>
-                            </div>
-                        </div>
+  const userName = isAuth().userName ? ` ${isAuth().userName} ` : "";
+
+  function toggleInfoVisibility() {
+    dispatch(toggleTransactionVisibility())
+  }
+
+  return (
+    <>
+      <SideNav />
+      <ContainerDashboard>
+        {loading ? (
+          <MoneyLoader color="white" size={150} />
+        ) : (
+          <>
+            <div className="div-row">
+              <div className="cards-row">
+                <div className="container-header">
+                  <div className="bloco-welcome-hide-data">
+                    <p className="texto-welcome">
+                      Olá<strong>{userName}</strong>, seja bem vindo!
+                    </p>
+                  </div>
+                  <button
+                    className="bloco-welcome-hide-data"
+                    onClick={toggleInfoVisibility}
+                  >
+                    <div className="circle-icon-hidden-show">
+                      <img
+                        src={IconHidden}
+                        alt="Icon Hidden"
+                        className="icon-hidden-show"
+                      />
                     </div>
+                  </button>
                 </div>
-                <div className="div-row">
-                    <div className="cards-row">
-                        <Switch>
-                            <Route path="/dashboard" exact component={SummaryCards}/>
-                            <Route path="/dashboard/deposit" component={Deposit}/>
-                            <Route path="/dashboard/transfer" component={Transfer}/>
-                            <Route path="/dashboard/plans" component={Plans}/>
-                        </Switch>
+              </div>
+            </div>
+            <div className="div-row">
+              <div className="cards-row">
+                <Switch>
+                  <Route path="/dashboard" exact component={SummaryCards} />
+                  <Route path="/dashboard/deposit" component={Deposit} />
+                  <Route path="/dashboard/transfer" component={Transfer} />
+                  <Route path="/dashboard/plans" component={Plans} />
+                </Switch>
+              </div>
+              <div className="cards-row last">
+                <WhiteCardDash _maxWidth="100%">
+                  <div className="section-account-history">
+                    <div className="title-account-history">
+                      <div className="title-historic-account">
+                        <img
+                          src={IconCoin}
+                          alt="Icon Coin"
+                          className="account-icon-card"
+                        />
+                        <p className="text-historic-account">
+                          Últimos lançamentos
+                        </p>
+                      </div>
                     </div>
-                    <div className="cards-row last">
-                        <WhiteCardDash _maxWidth="100%">
-                            <div className="section-account-history">
-                                <div className="title-account-history">
-                                    <div className="title-historic-account">
-                                        <img src={IconCoin} alt="Icon Coin" className="account-icon-card"/>
-                                        <p className="text-historic-account">Últimos lançamentos</p>
-                                    </div>
-                                </div>
-                                <div className="extract-account-history">
-                                    <div className="row-historic-account">
-                                        <div className="column-icon">
-                                            <img src={IconHistoryCard} alt="Icon Coin"
-                                                 className="account-icon-history-card"/>
-                                        </div>
-                                        <div className="column-description">
-                                            <p className="historic-text">Compra no débito</p>
-                                            <p className="description-text">GamaAcademy</p>
-                                            <p className="value-text">R$: 298,55</p>
-                                        </div>
-                                        <div className="column-date">
-                                            <p className="date-text">Dia 24 de Jan.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </WhiteCardDash>
-                    </div>
-                </div>
-            </ContainerDashboard>
-        </>
-    )
-}
+
+                    {hideInfo ? (
+                      <HidableValue condition={hideInfo} large />
+                    ) : (
+                      <>
+                        {debitTransactions![0] ? (
+                          debitTransactions!.map((tr) => (
+                            <TransactionCard key={tr.id} {...tr} />
+                          ))
+                        ) : (
+                          <p className="text-historic-account-empty">
+                            Não existem lançamentos.
+                          </p>
+                        )}
+                      </>
+                    )}
+                  </div>
+                </WhiteCardDash>
+              </div>
+            </div>
+          </>
+        )}
+      </ContainerDashboard>
+    </>
+  );
+};
 
 export default Dashboard;
