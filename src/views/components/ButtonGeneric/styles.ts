@@ -40,4 +40,8 @@ export const ButtonGenericContainer = styled.button<ButtonProps>`
     color: ${(props) => (props._colorHover || "#FFFFFF")};
     background-color: ${(props) => (props._bgHover || mainGreen)};
   }
+
+  @media (min-width: 0) and (max-width: 767px) {
+    font-size: 13px;
+  }
 `;
