@@ -13,7 +13,13 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 const InputPrimary: React.FC<InputProps> = ({ icon: Icon, name, ...rest }) => {
   const [isFocused, setFocused] = useState(false);
   const inputRef = useRef(null);
-  const { fieldName, defaultValue, registerField, error } = useField(name);
+  const {
+    fieldName,
+    defaultValue,
+    registerField,
+    error,
+    clearError,
+  } = useField(name);
 
   useEffect(() => {
     // Unform setup
@@ -24,11 +30,16 @@ const InputPrimary: React.FC<InputProps> = ({ icon: Icon, name, ...rest }) => {
     });
   }, [fieldName, registerField]);
 
+  function focus() {
+    setFocused(true)
+    clearError()
+  }
+
   return (
     <S.Container isFocused={isFocused} isErrored={!!error}>
       {Icon && <Icon size={20} />}
       <input
-        onFocus={() => setFocused(true)}
+        onFocus={focus}
         onBlur={() => setFocused(false)}
         ref={inputRef}
         defaultValue={defaultValue}
