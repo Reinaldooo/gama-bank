@@ -31,7 +31,7 @@ export interface ILancamentoRedux {
   data: string;
   descricao: string;
   login: string;
-  planoConta: number;
+  planoConta: IPlanoConta;
   valor: number;
 }
 
