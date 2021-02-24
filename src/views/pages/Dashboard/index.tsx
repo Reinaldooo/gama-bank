@@ -1,8 +1,7 @@
 import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useToast } from "../../../context/toastContext";
-//
 import api from "../../../services/api";
 import { isAuth } from "../../../services/auth";
 import {
@@ -19,7 +18,6 @@ import {ContainerDashboard} from "./styles"
 import {Route, Switch} from "react-router-dom";
 import SummaryCards from "../../components/SummaryCards";
 import Deposit from "./Deposit";
-import { FiChevronLeft } from "react-icons/fi";
 import Transfer from "./Transfer";
 
 const Dashboard: React.FC = () => {
@@ -115,6 +113,7 @@ const Dashboard: React.FC = () => {
                                             <p className="date-text">Dia 24 de Jan.</p>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </WhiteCardDash>

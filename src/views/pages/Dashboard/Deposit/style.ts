@@ -1,19 +1,32 @@
 import styled from 'styled-components';
 
-export const Header = styled.header `
-    a{
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        color: #FFFF;
-        transition: color 0.2s;
-        &:hover{
-            color:  #63dc3f;
-        }
-        svg{
-            margin-right: 4px;
-        }
+export const Header = styled.header`
+  margin-top: -20px;
+  margin-bottom: 28px;
+
+  @media (min-width: 0) and (max-width: 767px) {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    margin-bottom: 0;
+  }
+  
+  a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #FFFF;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #63dc3f;
     }
+
+    svg {
+      margin-right: 4px;
+    }
+  }
 `
 
 export const Container = styled.div`
@@ -42,7 +55,7 @@ export const Container = styled.div`
       padding: 0 0 20px;
 
       input {
-        display: initial;
+        display: block;
         border: none;
         font-size: 16px;
         padding: 8px;
@@ -54,14 +67,29 @@ export const Container = styled.div`
         transition: 0.5s;
         background: #FBFBFB;
 
+        @media (min-width: 0) and (max-width: 767px) {
+          font-size: 14px;
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+          font-size: 16px;
+        }
+
         &:focus {
-          border-bottom: 3px solid #8C52E5;
+          border-bottom: 2px solid #8C52E5;
         }
       }
 
       h3 {
-        margin-left: 30px;
         margin-top: 15px;
+
+        @media (min-width: 0) and (max-width: 767px) {
+          margin-left: 0;
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+          margin-left: 0;
+        }
       }
     }
   }

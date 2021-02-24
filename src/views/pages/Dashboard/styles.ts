@@ -87,12 +87,15 @@ export const ContainerDashboard = styled.div`
 
         @media (min-width: 0) and (max-width: 767px) {
           margin: 35px 0 45px 0;
-          flex-flow: column;
+          flex-flow: row;
+          justify-content: space-between;
         }
 
         @media (min-width: 768px) and (max-width: 991px) {
           margin: 35px 0 45px 0;
           flex-flow: column;
+          flex-flow: row;
+          justify-content: space-between;
         }
 
         .bloco-welcome-hide-data {
@@ -106,18 +109,44 @@ export const ContainerDashboard = styled.div`
             justify-content: flex-end;
           }
 
+          @media (min-width: 0) and (max-width: 767px) {
+            &:first-of-type {
+              width: 80%;
+              max-width: 80%;
+              justify-content: flex-start;
+            }
+            
+            &:last-of-type {
+              width: 20%;
+              max-width: 20%;
+              justify-content: flex-end;
+            }
+          }
+
+          @media (min-width: 768px) and (max-width: 991px) {
+            &:first-of-type {
+              width: 80%;
+              max-width: 80%;
+              justify-content: flex-start;
+            }
+
+            &:last-of-type {
+              width: 20%;
+              max-width: 20%;
+              justify-content: flex-end;
+            }
+          }
+
           .texto-welcome {
             color: #FFFFFF;
             font-size: 22px;
 
             @media (min-width: 0) and (max-width: 767px) {
-              margin-bottom: 20px;
-              text-align: center;
+              text-align: left;
             }
 
             @media (min-width: 768px) and (max-width: 991px) {
-              margin-bottom: 20px;
-              text-align: center;
+              text-align: left;
             }
           }
 
@@ -141,29 +170,6 @@ export const ContainerDashboard = styled.div`
               }
             }
           }
-
-
-          @media (min-width: 0) and (max-width: 767px) {
-            width: 100%;
-            max-width: 100%;
-            justify-content: center;
-
-            &:last-of-type {
-              display: flex;
-              justify-content: center;
-            }
-          }
-
-          @media (min-width: 768px) and (max-width: 991px) {
-            width: 100%;
-            max-width: 100%;
-            justify-content: center;
-
-            &:last-of-type {
-              display: flex;
-              justify-content: center;
-            }
-          }
         }
       }
 
@@ -177,6 +183,7 @@ export const ContainerDashboard = styled.div`
           width: 100%;
           max-width: 100%;
           display: flex;
+          margin-top: 15px;
           justify-content: flex-start;
           align-items: flex-start;
 
@@ -238,6 +245,10 @@ export const ContainerDashboard = styled.div`
 
             & + div {
               padding-top: 25px;
+            }
+            
+            &:last-of-type {
+              margin-bottom: 20px;
             }
 
             .column-icon {

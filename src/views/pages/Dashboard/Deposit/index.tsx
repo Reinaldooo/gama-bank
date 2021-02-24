@@ -4,7 +4,7 @@ import ButtonGeneric from "../../../components/ButtonGeneric";
 import api from '../../../../services/api'
 import { Container, Header } from './style';
 import WhiteCardDash from '../../../components/WhiteCardDashboard';
-import { FiChevronLeft } from 'react-icons/fi';
+import {FiChevronLeft, FiChevronRight} from 'react-icons/fi';
 
 
 const Deposit: React.FC = () => {
@@ -62,7 +62,8 @@ const Deposit: React.FC = () => {
                 <ButtonGeneric 
                 title="Realizar deposito agora" 
                 type="submit" 
-                _colorHover="#FFFFFF" 
+                _colorHover="#FFFFFF"
+                icon={FiChevronRight}
                 _bgHover="#3da131" />
             </form>
           </div>
