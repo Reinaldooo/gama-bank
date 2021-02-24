@@ -21,6 +21,7 @@ import SummaryCards from "../../components/SummaryCards";
 import Deposit from "./Deposit";
 import { FiChevronLeft } from "react-icons/fi";
 import Transfer from "./Transfer";
+import Plans from "./Plans";
 
 const Dashboard: React.FC = () => {
   const dispatch = useDispatch();
@@ -89,6 +90,7 @@ const Dashboard: React.FC = () => {
                             <Route path="/dashboard" exact component={SummaryCards}/>
                             <Route path="/dashboard/deposit" component={Deposit}/>
                             <Route path="/dashboard/transfer" component={Transfer}/>
+                            <Route path="/dashboard/plans" component={Plans}/>
                         </Switch>
                     </div>
                     <div className="cards-row last">
