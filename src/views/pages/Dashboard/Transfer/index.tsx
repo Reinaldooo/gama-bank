@@ -71,7 +71,6 @@ const Transfer: React.FC = () => {
             api.post(`lancamentos`, postData).then(
                 response => {
                     if (response.status === 200) {
-
                     // if(type === "840"){
                     //     delete postData.login;
                     //     dispatch(debitTransactionSuccess({
