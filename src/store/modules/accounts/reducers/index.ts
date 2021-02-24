@@ -11,6 +11,7 @@ import {
   TRANSACTION_ERROR,
   DEBIT_TRANSACTION_SUCCESS,
   CREDIT_TRANSACTION_SUCCESS,
+  TOGGLE_TRANSACTION_VISIBILITY,
   IConta,
 } from "../types";
 
@@ -23,6 +24,7 @@ const initialState: IDashboardState = {
   debitTransactions: null,
   creditTransactions: null,
   transactionTypes: null,
+  hideInfo: true,
 };
 
 function calculaSaldo(
@@ -141,6 +143,9 @@ export default function reducer(
           },
         ],
       };
+
+    case TOGGLE_TRANSACTION_VISIBILITY:
+      return { ...state, hideInfo: !state.hideInfo };
 
     default:
       return state;

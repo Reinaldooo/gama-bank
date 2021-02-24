@@ -8,6 +8,7 @@ import api from "../../../services/api";
 import { isAuth } from "../../../services/auth";
 import {
   accountDataSuccess,
+  toggleTransactionVisibility,
   transactionTypesSuccess,
 } from "../../../store/modules/accounts/actions";
 import { IDashboardState } from "../../../store/modules/accounts/types";
@@ -21,12 +22,13 @@ import Deposit from "./Deposit";
 import Transfer from "./Transfer";
 import MoneyLoader from "../../components/MoneyLoader";
 import TransactionCard from "./TransactionCard";
+import HidableValue from "../../components/HidableValue";
 
 const Dashboard: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { addToast } = useToast();
-  const { loading, debitTransactions } = useSelector(
+  const { loading, debitTransactions, hideInfo } = useSelector(
     (state: IDashboardState) => state
   );
 
@@ -68,6 +70,10 @@ const Dashboard: React.FC = () => {
 
   const userName = isAuth().userName ? ` ${isAuth().userName} ` : "";
 
+  function toggleInfoVisibility() {
+    dispatch(toggleTransactionVisibility())
+  }
+
   return (
     <>
       <SideNav />
@@ -84,7 +90,10 @@ const Dashboard: React.FC = () => {
                       Olá<strong>{userName}</strong>, seja bem vindo!
                     </p>
                   </div>
-                  <div className="bloco-welcome-hide-data">
+                  <button
+                    className="bloco-welcome-hide-data"
+                    onClick={toggleInfoVisibility}
+                  >
                     <div className="circle-icon-hidden-show">
                       <img
                         src={IconHidden}
@@ -92,7 +101,7 @@ const Dashboard: React.FC = () => {
                         className="icon-hidden-show"
                       />
                     </div>
-                  </div>
+                  </button>
                 </div>
               </div>
             </div>
@@ -120,14 +129,20 @@ const Dashboard: React.FC = () => {
                       </div>
                     </div>
 
-                    {debitTransactions![0] ? (
-                      debitTransactions!.map((tr) => (
-                        <TransactionCard key={tr.id} {...tr} />
-                      ))
+                    {hideInfo ? (
+                      <HidableValue condition={hideInfo} large />
                     ) : (
-                      <p className="text-historic-account-empty">
-                        Não existem lançamentos.
-                      </p>
+                      <>
+                        {debitTransactions![0] ? (
+                          debitTransactions!.map((tr) => (
+                            <TransactionCard key={tr.id} {...tr} />
+                          ))
+                        ) : (
+                          <p className="text-historic-account-empty">
+                            Não existem lançamentos.
+                          </p>
+                        )}
+                      </>
                     )}
                   </div>
                 </WhiteCardDash>

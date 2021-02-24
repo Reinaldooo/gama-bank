@@ -6,12 +6,14 @@ import IconCard from "../../../assets/icon-card.png";
 import { useSelector } from "react-redux";
 import { IDashboardState } from "../../../store/modules/accounts/types";
 import { formatBRL } from "../../../utils/formatter";
+import HidableValue from "../HidableValue";
 
 const SummaryCards: React.FC = () => {
     const {
         debitAccount,
         debitTransactions,
         creditAccount,
+        hideInfo
     } = useSelector((state: IDashboardState) => state)
 
     const debitBalance = formatBRL(debitAccount!.saldo) || "R$ 0"
@@ -35,11 +37,15 @@ const SummaryCards: React.FC = () => {
                     </div>
                     <div className="balance-account">
                         <p className="balance-title">Saldo disponível</p>
-                        <p className="balance-number">{debitBalance}</p>
+                        <div className="balance-number">
+                            <HidableValue condition={hideInfo} value={debitBalance}/>
+                        </div>
                     </div>
                     <div className="transaction-account">
                         <p className="transaction-title">Transações</p>
-                        <p className="transaction-value">{debitTransactionsSum}</p>
+                        <div className="transaction-value">
+                            <HidableValue condition={hideInfo} value={debitTransactionsSum}/>
+                        </div>
                     </div>
                 </div>
             </WhiteCardDash>
@@ -51,11 +57,15 @@ const SummaryCards: React.FC = () => {
                     </div>
                     <div className="balance-account">
                         <p className="balance-title">Fatura atual</p>
-                        <p className="balance-number__blue">{creditBill}</p>
+                        <div className="balance-number__blue">
+                            <HidableValue condition={hideInfo} value={creditBill}/>
+                        </div>
                     </div>
                     <div className="transaction-account">
                         <p className="transaction-title">Limite disponível</p>
-                        <p className="transaction-value">{creditBalance}</p>
+                        <div className="transaction-value">
+                            <HidableValue condition={hideInfo} value={creditBalance}/>
+                        </div>
                     </div>
                 </div>
             </WhiteCardDash>

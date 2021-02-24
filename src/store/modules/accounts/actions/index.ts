@@ -9,6 +9,7 @@ import {
   TRANSACTION_TYPES_SUCCESS,
   DEBIT_TRANSACTION_SUCCESS,
   CREDIT_TRANSACTION_SUCCESS,
+  TOGGLE_TRANSACTION_VISIBILITY
 } from "../types";
 
 export function accountDataSuccess(data: IAccounts): IAction {
@@ -52,5 +53,11 @@ export function creditTransactionSuccess(
   return {
     type: CREDIT_TRANSACTION_SUCCESS,
     payload: lancamento,
+  };
+}
+
+export function toggleTransactionVisibility(): IAction {
+  return {
+    type: TOGGLE_TRANSACTION_VISIBILITY
   };
 }

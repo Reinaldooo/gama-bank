@@ -82,7 +82,7 @@ export const ContainerDashboard = styled.div`
         padding: 0 10px;
         margin: 10px 0 45px 0;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
 
         @media (min-width: 0) and (max-width: 767px) {
@@ -96,8 +96,9 @@ export const ContainerDashboard = styled.div`
         }
 
         .bloco-welcome-hide-data {
-          width: 50%;
-          max-width: 50%;
+          background-color: transparent;
+          outline: none;
+          border: none;
           display: flex;
           justify-content: flex-start;
 
