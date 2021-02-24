@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import api from '../../../../services/api'
 import { Container, Header } from './styles';
@@ -13,20 +13,12 @@ const Plans: React.FC = () => {
 
     const [planoConta, setPlanoConta] = useState<IPlanoConta[]> ([]);
 
-    function getPlans() {
+      useEffect(() => {
         const login = isAuth().login;
-        api.get(`lancamentos/planos-conta`, {headers: {Authorization: login}}).then( res =>{
-            console.log(res);
+        api.get(`lancamentos/planos-conta`, {params: {login}}).then( ({data}) =>{
+            setPlanoConta(data)
         })
-    }
-
-
-    // async function getPlans() {
-    //     const response = await api.get(`lancamentos/planos-conta`);
-    //     const plans = response.data;
-    //     setPlanoConta([...planoConta, plans])
-    //     console.log(planoConta);
-    // }
+      }, [] )
 
   return (
       <Container>
@@ -35,15 +27,17 @@ const Plans: React.FC = () => {
           </Header>
 
           <WhiteCardDash>
-              <div className="card">
-                  <button onClick={getPlans} >sadas</button>
-                  <div className="text">
-                    <h5>TITULO</h5>
-                    <h6>Usuario</h6>
-                    <p>Plano</p>
-                  </div>
-              </div>
-
+              {
+                  planoConta.map(res => (
+                    <div key={res.id} className="card">
+                        <div className="text">
+                            <h5>{res.descricao}</h5>
+                            <h6>{res.login}</h6>
+                            <p>{res.tipoMovimento}</p>
+                        </div>
+                    </div>
+                  ))
+              }
           </WhiteCardDash>
 
       </Container>

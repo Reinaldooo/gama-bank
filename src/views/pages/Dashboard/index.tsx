@@ -29,7 +29,7 @@ const Dashboard: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { addToast } = useToast();
-  const { loading, debitTransactions, hideInfo } = useSelector(
+  const { loading, debitTransactions, hideInfo} = useSelector(
     (state: IDashboardState) => state
   );
 
@@ -42,7 +42,7 @@ const Dashboard: React.FC = () => {
             fim: "2021-01-31",
             login: isAuth().login,
           },
-        });
+        });        
         dispatch(accountDataSuccess(accounts));
 
         const { data: tTypes } = await api.get("/lancamentos/planos-conta", {
