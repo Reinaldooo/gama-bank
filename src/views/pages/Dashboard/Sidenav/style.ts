@@ -21,6 +21,10 @@ export const Container = styled.div`
     justify-content: space-evenly;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
+
+    .link {
+      display: none;
+    }
   }
 
   @media (min-width: 768px) and (max-width: 991px) {
@@ -32,6 +36,10 @@ export const Container = styled.div`
     justify-content: space-evenly;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
+
+    .link {
+      display: none;
+    }
   }
 
   .logo-gama-bank {
