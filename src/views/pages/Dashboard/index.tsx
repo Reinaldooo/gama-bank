@@ -29,25 +29,26 @@ const Dashboard: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { addToast } = useToast();
-  const { loading, debitTransactions, hideInfo} = useSelector(
+  const { loading, debitTransactions, hideInfo } = useSelector(
     (state: IDashboardState) => state
   );
 
   useEffect(() => {
     async function getApiInfo() {
       try {
-        const { data: accounts } = await api.get(`/dashboard`, {
-          params: {
-            inicio: "2021-01-01",
-            fim: "2021-01-31",
-            login: isAuth().login,
-          },
-        });        
+        const [{ data: accounts }, { data: tTypes }] = await Promise.all([
+          await api.get(`/dashboard`, {
+            params: {
+              inicio: "2021-01-01",
+              fim: "2021-01-31",
+              login: isAuth().login,
+            },
+          }),
+          await api.get("/lancamentos/planos-conta", {
+            params: { login: isAuth().login },
+          }),
+        ]);
         dispatch(accountDataSuccess(accounts));
-
-        const { data: tTypes } = await api.get("/lancamentos/planos-conta", {
-          params: { login: isAuth().login },
-        });
         dispatch(transactionTypesSuccess(tTypes));
       } catch (err) {
         // Expired token errors will be handled here
@@ -72,7 +73,7 @@ const Dashboard: React.FC = () => {
   const userName = isAuth().userName ? ` ${isAuth().userName} ` : "";
 
   function toggleInfoVisibility() {
-    dispatch(toggleTransactionVisibility())
+    dispatch(toggleTransactionVisibility());
   }
 
   return (
