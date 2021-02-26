@@ -16,6 +16,8 @@ import getValidationErrors from '../../../../utils/getValidationErrors';
 import { useToast } from '../../../../context/toastContext';
 import { creditTransactionSuccess, debitTransactionSuccess } from '../../../../store/modules/accounts/actions';
 import shortid from 'shortid';
+import { createFloat } from '../../../../utils/formatter';
+import InputPrimaryMask from '../../../components/InputPrimaryMask';
 
 interface ITransferForms{
    valor: number,
@@ -39,6 +41,8 @@ const Transfer: React.FC = () => {
     const history = useHistory()
 
     async function transfer( data : ITransferForms ) {
+
+        data.valor = createFloat(data.valor)
 
         const postData =  {
             conta: debitAccount!.id,
@@ -132,9 +136,10 @@ const Transfer: React.FC = () => {
                             name="descricao"
                             type="text"
                             placeholder="Descrição"/>
-                        <InputPrimary   
+                        <InputPrimaryMask
+                            mask="BRL"  
                             name="valor"
-                            type="number"
+                            type="text"
                             placeholder="Qual o valor de sua transferência?"/>
 
 

@@ -92,6 +92,11 @@ const InputPrimaryMask: React.FC<InputProps> = ({
           <FiAlertTriangle size={20} />
         </S.ErrorTooltip>
       )}
+      {isBRL && (
+        <S.MaxValue>
+          Max: R$ 9.999,99
+        </S.MaxValue>
+      )}      
     </S.Container>
   );
 };

@@ -38,3 +38,10 @@ export function formatCPF(cpf: string) {
     .replace(/(\d{3})(\d{1,2})/, "$1-$2")
     .replace(/(-\d{2})\d+?$/, "$1");
 }
+
+export function createFloat(value: string | number): number {
+  if(typeof value === "number") return value
+  const cleanValue =  value.replace(/\D/g, "")
+  if(cleanValue.length < 3) return Number(cleanValue)
+  return  Number(cleanValue.slice(0, -2) + "." + cleanValue.slice(-2))
+}
