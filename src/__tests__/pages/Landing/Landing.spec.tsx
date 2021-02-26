@@ -1,9 +1,9 @@
 import React from "react";
 import {fireEvent, getByText, render} from '@testing-library/react';
-import SectionA from "../../views/pages/Landing/SectionA"
-import SectionB from "../../views/pages/Landing/SectionB"
-import SectionC from "../../views/pages/Landing/SectionC"
-import SectionD from "../../views/pages/Landing/SectionC"
+import SectionA from "../../../views/pages/Landing/SectionA"
+import SectionB from "../../../views/pages/Landing/SectionB"
+import SectionC from "../../../views/pages/Landing/SectionC"
+import SectionD from "../../../views/pages/Landing/SectionC"
  
 jest.mock('react-router-dom', () => {
     return {
