@@ -1,9 +1,9 @@
 import React from "react";
 //
 import { Container } from "./style";
-import IconHistoryCard from "../../../../assets/icon-history-card.png";
-import { ILancamento } from "../../../../store/modules/accounts/types";
-import { formatBRL, formatDate } from "../../../../utils/formatter";
+import IconHistoryCard from "../../../assets/icon-history-card.png";
+import { ILancamento } from "../../../store/modules/accounts/types";
+import { formatBRL, formatDate } from "../../../utils/formatter";
 
 interface ITransactionsMap {
   [key: string]: string;

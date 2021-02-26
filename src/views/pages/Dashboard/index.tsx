@@ -21,7 +21,7 @@ import SummaryCards from "../../components/SummaryCards";
 import Deposit from "./Deposit";
 import Transfer from "./Transfer";
 import MoneyLoader from "../../components/MoneyLoader";
-import TransactionCard from "./TransactionCard";
+import TransactionCard from "../../components/TransactionCard";
 import HidableValue from "../../components/HidableValue";
 import Plans from "./Plans";
 import {FiArrowLeftCircle, FiArrowRightCircle} from "react-icons/fi";

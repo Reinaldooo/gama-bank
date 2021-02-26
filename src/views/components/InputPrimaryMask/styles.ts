@@ -41,7 +41,7 @@ export const Container = styled.div<ContainerProps>`
     height: 35px;
     color: #222;
     outline: none;
-    font-size: ${(props) => (props.isBRL ? "1.2rem" : "0.9rem")};
+    font-size: ${(props) => (props.isBRL ? "1.1rem" : "0.9rem")};
 
     &::placeholder {
       color: #999;
@@ -71,5 +71,19 @@ export const ErrorTooltip = styled(Tooltip)`
     &::before {
       border-color: #e6505c transparent;
     }
+  }
+`;
+
+export const MaxValue = styled.div`
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #8c52e5;
+  position: absolute;
+  right: 0;
+
+  @media screen and (max-width: 380px) {
+    top: 50px;
+    width: 100%;
+    text-align: center;
   }
 `;

@@ -17,11 +17,13 @@ import { isAuth } from "../../../../services/auth";
 import { useToast } from "../../../../context/toastContext";
 import getValidationErrors from "../../../../utils/getValidationErrors";
 import { debitTransactionSuccess } from "../../../../store/modules/accounts/actions";
+import InputPrimaryMask from "../../../components/InputPrimaryMask";
+import { createFloat } from "../../../../utils/formatter";
 
 interface DepositForm {
   data: string;
   descricao: string;
-  valor: number;
+  valor: number | string;
 }
 
 const Deposit: React.FC = () => {
@@ -36,13 +38,14 @@ const Deposit: React.FC = () => {
 
   async function deposit({descricao, data, valor}: DepositForm) {
     try {
+      valor = createFloat(valor)
       // Start by cleaning errors
       formRef.current?.setErrors({});
 
       const schema = Yup.object({
         data: Yup.string().required("Campo obrigatório"),
         descricao: Yup.string().required("Campo obrigatório"),
-        valor: Yup.number().max(10000, "Valor máximo de R$ 10.000").required("Campo obrigatório"),
+        valor: Yup.number().max(9999.99, "Valor máximo de R$ 9.999,99").required("Campo obrigatório"),
       });
 
       await schema.validate({descricao, data, valor}, { abortEarly: false });
@@ -121,10 +124,11 @@ const Deposit: React.FC = () => {
               type="text"
               placeholder="Descrição"
             />
-            <InputPrimary
+            <InputPrimaryMask
+              mask="BRL"
               name="valor"
-              type="number"
-              placeholder="Valor do deposito"
+              type="text"
+              placeholder="Valor do depósito"
             />
             <ButtonGeneric
               title="Realizar deposito agora"
