@@ -99,7 +99,6 @@ const Plans: React.FC = () => {
                             <option value="R"> Receitas </option>
                             <option value="D"> Despesas </option>
                             <option value="TU"> Tranferência de usuário para usuário </option>
-
                   </select>
                 <ButtonGeneric
                             title="Realizar transferência agora"
