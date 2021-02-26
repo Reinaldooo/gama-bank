@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import getValidationErrors from '../../../../utils/getValidationErrors';
 import { useToast } from '../../../../context/toastContext';
-import { debitTransactionSuccess } from '../../../../store/modules/accounts/actions';
+import { creditTransactionSuccess, debitTransactionSuccess } from '../../../../store/modules/accounts/actions';
 import shortid from 'shortid';
 
 interface ITransferForms{
@@ -28,7 +28,7 @@ interface ITransferForms{
 const Transfer: React.FC = () => {
  
     const dispatch = useDispatch()
-    const [type, setType] = useState('840');
+    const [type, setType] = useState('TC');
     const [loading, setLoading] = useState(false);
     const formRef = useRef<FormHandles>(null);
     const {debitAccount,  transactionTypes} = useSelector(
@@ -39,22 +39,18 @@ const Transfer: React.FC = () => {
     const history = useHistory()
 
     async function transfer( data : ITransferForms ) {
-      
-        const postData = type === "840" ? {
+
+        const postData =  {
             conta: debitAccount!.id,
             data: data.data,
             descricao: data.descricao,
-            login: isAuth().login,
+            login: isAuth().login!,
             valor: data.valor,
-            planoConta: type
-        } : {
-            conta:  debitAccount!.id,
-            contaDestino: data.destinatario,
-            data: data.data,
-            descricao: data.descricao,
-            login: isAuth().login,
-            valor: data.valor,
-            planoConta: type
+            planoConta: transactionTypes![type].id,
+            contaDestino: isAuth().login!,
+        } 
+        if(type === 'TU'){
+            postData.contaDestino = data.destinatario!
         }
         try {
             formRef.current?.setErrors({});
@@ -62,7 +58,7 @@ const Transfer: React.FC = () => {
             const schema = Yup.object({
               data: Yup.string().required("Campo obrigatório"),
               descricao: Yup.string().required("Campo obrigatório"),
-              valor: Yup.number().required("Campo obrigatório"),
+              valor: Yup.number().max(10000, "Valor máximo de R$ 10.000").required("Campo obrigatório"),
               destinatario: Yup.string(),
             });
       
@@ -70,14 +66,23 @@ const Transfer: React.FC = () => {
             setLoading(true);
             api.post(`lancamentos`, postData).then(
                 response => {
+                  
                     if (response.status === 200) {
-                    // if(type === "840"){
-                    //     delete postData.login;
-                    //     dispatch(debitTransactionSuccess({
-                    //         ...postData, 
-                    //         id: shortid(), planoConta: transactionTypes!["R"], valor: Number(valor)
-                    //     }))
-                    // }
+
+                        const lancamentoRedux = {
+                            ...postData,
+                            id: shortid(),
+                            planoConta: transactionTypes!["TC"],
+                            valor: Number(data.valor),
+                          };
+
+                    if(type === "TC"){
+                        dispatch(debitTransactionSuccess(lancamentoRedux))
+                        dispatch(creditTransactionSuccess(lancamentoRedux))
+                    }else{
+                        lancamentoRedux.planoConta = transactionTypes!["TU"];
+                        dispatch(debitTransactionSuccess(lancamentoRedux))
+                    }
                         addToast({
                             title: "Transferência realizada com sucesso",
                             type: "success",
@@ -134,11 +139,11 @@ const Transfer: React.FC = () => {
 
 
                         <select value={type} onChange={e => setType(e.target.value)}>
-                            <option value="840"> Da minha conta para meu crédito</option>
-                            <option value="841"> Tranferência da sua conta para outra conta</option>
+                            <option value="TC"> Da minha conta para meu crédito</option>
+                            <option value="TU"> Da minha conta para outra pessoa</option>
                         </select>
                         {
-                            type === "841" &&
+                            type === "TU" &&
                             <InputPrimary  
                             name="destinatario" 
                             type="text"

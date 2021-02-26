@@ -26,7 +26,7 @@ const SideNav: React.FC = () => {
                 <div className="menu-option">
                     <Link to="/dashboard/transfer">
                         <img className="pix" src={pix} alt="transaction"/>
-                        <p>Transações</p>
+                        <p>Transferências</p>
                     </Link>
                 </div>
             </Container>
