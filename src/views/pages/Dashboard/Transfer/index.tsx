@@ -57,42 +57,52 @@ const Transfer: React.FC = () => {
 
             const schema = Yup.object({
               data: Yup.string().required("Campo obrigatório"),
-              descricao: Yup.string().required("Campo obrigatório"),
-              valor: Yup.number().max(10000, "Valor máximo de R$ 10.000").required("Campo obrigatório"),
+              descricao: Yup.string().max(15, "máximo de 15 caracteres").min(2,"mínimo de 2 caracteres").required("Campo obrigatório"),
+              valor: Yup.number().max(10000, "Valor máximo de R$ 10.000").min(2, "Valor mínimo de R$ 2,00").required("Campo obrigatório"),
               destinatario: Yup.string(),
             });
       
             await schema.validate(data, { abortEarly: false });
             setLoading(true);
-            api.post(`lancamentos`, postData).then(
-                response => {
-                  
-                    if (response.status === 200) {
 
-                        const lancamentoRedux = {
-                            ...postData,
-                            id: shortid(),
-                            planoConta: transactionTypes!["TC"],
-                            valor: Number(data.valor),
-                          };
-
-                    if(type === "TC"){
-                        dispatch(debitTransactionSuccess(lancamentoRedux))
-                        dispatch(creditTransactionSuccess(lancamentoRedux))
-                    }else{
-                        lancamentoRedux.planoConta = transactionTypes!["TU"];
-                        dispatch(debitTransactionSuccess(lancamentoRedux))
+            if(type === "TU" && postData.login === postData.contaDestino){
+                setLoading(false);
+                addToast({
+                  title: "Você não pode transferir pra você mesmo!",
+                  type: "error",
+                  message: "Por favor tente novamente.",
+                });
+            }else{
+                api.post(`lancamentos`, postData).then(
+                    response => {
+                      
+                        if (response.status === 200) {
+    
+                            const lancamentoRedux = {
+                                ...postData,
+                                id: shortid(),
+                                planoConta: transactionTypes!["TC"],
+                                valor: Number(data.valor),
+                              };
+    
+                        if(type === "TC"){
+                            dispatch(debitTransactionSuccess(lancamentoRedux))
+                            dispatch(creditTransactionSuccess(lancamentoRedux))
+                        }else{
+                            lancamentoRedux.planoConta = transactionTypes!["TU"];
+                            dispatch(debitTransactionSuccess(lancamentoRedux))
+                        }
+                            addToast({
+                                title: "Transferência realizada com sucesso",
+                                type: "success",
+                              });
+                              history.push('/dashboard')
+                        } else {
+                            console.log("deu error");
+                        }
                     }
-                        addToast({
-                            title: "Transferência realizada com sucesso",
-                            type: "success",
-                          });
-                          history.push('/dashboard')
-                    } else {
-                        console.log("deu error");
-                    }
-                }
-            )
+                )
+            }
          
         } catch (err) {
             if (err instanceof Yup.ValidationError) {

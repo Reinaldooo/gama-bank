@@ -41,8 +41,8 @@ const Deposit: React.FC = () => {
 
       const schema = Yup.object({
         data: Yup.string().required("Campo obrigatório"),
-        descricao: Yup.string().required("Campo obrigatório"),
-        valor: Yup.number().max(10000, "Valor máximo de R$ 10.000").required("Campo obrigatório"),
+        descricao: Yup.string().max(15, "máximo de 15 caracteres").min(2,"mínimo de 2 caracteres").required("Campo obrigatório"),
+        valor: Yup.number().max(10000, "Valor máximo de R$ 10.000").min(2, "Valor mínimo de R$ 2,00").required("Campo obrigatório"),
       });
 
       await schema.validate({descricao, data, valor}, { abortEarly: false });
