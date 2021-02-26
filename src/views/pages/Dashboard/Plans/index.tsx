@@ -11,7 +11,8 @@ import { FormHandles } from '@unform/core';
 import { useToast } from '../../../../context/toastContext';
 import { IPlanoConta } from '../../../../store/modules/accounts/types';
 import ButtonGeneric from '../../../components/ButtonGeneric';
-
+import * as Yup from 'yup';
+import getValidationErrors from '../../../../utils/getValidationErrors';
 
 
 // IPlanoConta
@@ -22,6 +23,7 @@ const Plans: React.FC = () => {
     const [type, setType] = useState('TC');
     const {addToast} = useToast();
     const history = useHistory();
+    const [loading, setLoading] = useState(false);
     
       useEffect(() => {
         const login = isAuth().login;
@@ -38,24 +40,44 @@ const Plans: React.FC = () => {
             tipoMovimento: type
           }
 
-          api.post(`lancamentos/planos-conta`, postData).then(
-            res =>{
-
-              if (res.status === 200){
-                addToast({
-                  title: "Transferência realizada com sucesso",
-                  type: "success",
-                });
-                history.push('/dashboard')
-              }else{
-                console.log("deu erro");
-                
+          try{
+            formRef.current?.setErrors({});
+            const schema = Yup.object({
+              descricao: Yup.string().max(10, "máximo de 10 caracteres").min(2, "mínimo de 2 caracteres").required("Campo obrigatório"),
+            });
+            await schema.validate(data, { abortEarly: false });
+            setLoading(true);
+            api.post(`lancamentos/planos-conta`, postData).then(
+              res =>{
+                if (res.status === 200){
+                  addToast({
+                    title: "Plano cadastrado com sucesso!",
+                    type: "success",
+                  });
+                  history.push('/dashboard')
+                }else{
+                  console.log("deu erro");
+                }
               }
-
+              )
             }
-          )
-
-        
+            catch(err){
+              if (err instanceof Yup.ValidationError) {
+                const errors = getValidationErrors(err);
+                formRef.current?.setErrors(errors);
+                addToast({
+                  title: "Por favor confira seus dados.",
+                  type: "error",
+                });
+                return;
+              } 
+              setLoading(false);
+              addToast({
+                title: "Ops, algo deu errado!",
+                type: "error",
+                message: "Por favor tente novamente.",
+              });
+            }
       }
 
   return (
@@ -70,7 +92,7 @@ const Plans: React.FC = () => {
                 <InputPrimary 
                     name="descricao"
                     type="text"
-                    placeholder="Sigla do novo plano"
+                    placeholder="Descrição do novo plano"
                 />
                   <select value={type} onChange={e => setType(e.target.value)}>
                             <option value="TC"> Tranferência da minha conta para meu crédito </option>
