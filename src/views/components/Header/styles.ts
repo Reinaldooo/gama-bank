@@ -23,11 +23,23 @@ export const Header = styled.header`
     top: 0;
     left: 50%;
     transform: translate(-50%, 55px);
+    
+    & a {
+      .logo-gama {
+        max-width: 170px;
+      }
+    }
   }
 
   @media (min-width: 768px) and (max-width: 991px) {
     top: 0;
     left: 50%;
     transform: translate(-50%, 55px);
+
+    & a {
+      .logo-gama {
+        max-width: 170px;
+      }
+    }
   }
 `;

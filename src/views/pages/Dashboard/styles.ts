@@ -182,36 +182,94 @@ export const ContainerDashboard = styled.div`
         height: 100%;
         min-height: 396px;
 
-        .title-account-history {
+        .header-account {
+          padding: 0 3px;
+          margin-bottom: 30px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           width: 100%;
           max-width: 100%;
-          display: flex;
-          margin-top: 15px;
-          justify-content: flex-start;
-          align-items: flex-start;
 
-          .title-historic-account {
+          @media (min-width: 0) and (max-width: 767px) {
+            flex-flow: row wrap;
+          }
+
+          @media (min-width: 768px) and (max-width: 991px) {
+            flex-flow: row wrap;
+          }
+
+          .title-account-history {
+            width: 50%;
+            max-width: 50%;
             display: flex;
-            flex-flow: row;
+            margin-top: 15px;
             justify-content: flex-start;
-            align-items: center;
-
-            .text-historic-account, .text-historic-account {
-              color: #9B9B9B;
-              font-size: 18px;
-              font-weight: 400;
-              text-align: left;
-              margin-left: 20px;
+            align-items: flex-start;
+            
+            &:last-child {
+              justify-content: flex-end;
+              align-items: flex-start;
             }
 
-            .text-historic-account {
-              margin: 40px 20px;
-            }
-
-            .account-icon-coin {
-              max-width: 38px;
+            @media (min-width: 0) and (max-width: 767px) {
               width: 100%;
+              max-width: 100%;
+
+              &:last-child {
+                margin-top: 40px;
+                margin-bottom: 10px;
+                justify-content: center;
+                align-items: center;
+              }
             }
+
+            @media (min-width: 768px) and (max-width: 991px) {
+              width: 100%;
+              max-width: 100%;
+
+              &:last-child {
+                margin-top: 40px;
+                margin-bottom: 10px;
+                justify-content: center;
+                align-items: center;
+              }
+            }
+            
+
+            .title-historic-account {
+              display: flex;
+              align-items: center;
+              
+              
+
+              .text-historic-account {
+                color: #9B9B9B;
+                font-size: 18px;
+                font-weight: 400;
+                text-align: left;
+                margin-left: 20px;
+              }
+
+              .text-months {
+                padding: 0 10px;
+                color: #9B9B9B;
+                font-size: 18px;
+                font-weight: 400;
+                text-align: center;
+                width: 130px;
+                max-width: 130px;
+              }
+
+              .account-icon-coin {
+                max-width: 38px;
+                width: 100%;
+              }
+            }
+          }
+
+          .text-historic-account-empty {
+            margin-top: 20px;
           }
         }
       }
