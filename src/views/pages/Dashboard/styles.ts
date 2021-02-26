@@ -87,15 +87,14 @@ export const ContainerDashboard = styled.div`
 
         @media (min-width: 0) and (max-width: 767px) {
           margin: 35px 0 45px 0;
-          flex-flow: row;
-          justify-content: space-between;
+          flex-flow: column;
+          justify-content: center;
         }
 
         @media (min-width: 768px) and (max-width: 991px) {
           margin: 35px 0 45px 0;
           flex-flow: column;
-          flex-flow: row;
-          justify-content: space-between;
+          justify-content: center;
         }
 
         .bloco-welcome-hide-data {
@@ -104,37 +103,49 @@ export const ContainerDashboard = styled.div`
           border: none;
           display: flex;
           justify-content: flex-start;
+          padding-bottom: 10px;
 
           &:last-child {
             display: flex;
             justify-content: flex-end;
           }
 
-          @media (min-width: 0) and (max-width: 767px) {
+          .button-hidden-exit {
+            background: #8c52e5;
+            border: none;
+            
             &:first-child {
-              width: 80%;
-              max-width: 80%;
-              justify-content: flex-start;
-            }
-
-            &:last-child {
-              width: 20%;
-              max-width: 20%;
-              justify-content: flex-end;
+              padding-right: 20px;
             }
           }
 
-          @media (min-width: 768px) and (max-width: 991px) {
+          @media (min-width: 0) and (max-width: 767px) {
             &:first-child {
-              width: 80%;
-              max-width: 80%;
-              justify-content: flex-start;
+              width: 100%;
+              max-width: 100%;
+              justify-content: center;
+              margin-bottom: 30px;
             }
 
             &:last-child {
-              width: 20%;
-              max-width: 20%;
-              justify-content: flex-end;
+              width: 100%;
+              max-width: 100%;
+              justify-content: center;
+            }
+          }
+
+          @media (min-width: 0) and (max-width: 767px) {
+            &:first-child {
+              width: 100%;
+              max-width: 100%;
+              justify-content: center;
+              margin-bottom: 30px;
+            }
+
+            &:last-child {
+              width: 100%;
+              max-width: 100%;
+              justify-content: center;
             }
           }
 
