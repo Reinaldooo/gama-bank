@@ -105,7 +105,8 @@ const Plans: React.FC = () => {
                             type="submit"
                             _colorHover="#FFFFFF"
                             icon={FiChevronRight}
-                            _bgHover="#3da131" />
+                            _bgHover="#3da131"
+                            _loading={loading}/>
             </Form>
            
               {

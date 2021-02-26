@@ -11,6 +11,7 @@ import getValidationErrors from "../../../../../utils/getValidationErrors";
 import InputPrimary from "../../../../components/InputPrimary";
 import { FiChevronRight } from "react-icons/fi";
 import ButtonGeneric from "../../../../components/ButtonGeneric";
+import InputPrimaryMask from "../../../../components/InputPrimaryMask";
 
 interface FormFields {
   cpf: string;
@@ -34,7 +35,9 @@ const CreateAccountForm: React.FC = () => {
       formRef.current?.setErrors({});
 
       const schema = Yup.object({
-        cpf: Yup.string().required("Cpf obrigatório."),
+        cpf: Yup.string()
+          .min(14, "Favor incluir todos os números")
+          .required("Cpf obrigatório."),
         name: Yup.string().required("Campo obrigatório"),
         fullName: Yup.string().required("Campo obrigatório"),
         passwd: Yup.string().required("Senha obrigatória"),
@@ -49,7 +52,7 @@ const CreateAccountForm: React.FC = () => {
       setLoading(true);
 
       const formData = {
-        cpf,
+        cpf: cpf.replace(/\.|-/gm, ""), // Removing '.' and '-'
         login: name,
         nome: fullName,
         senha: passwd,
@@ -84,7 +87,8 @@ const CreateAccountForm: React.FC = () => {
 
   return (
     <Form ref={formRef} onSubmit={handleSubmit}>
-      <InputPrimary
+      <InputPrimaryMask
+        mask="CPF"
         name="cpf"
         type="text"
         icon={AiOutlineUser}

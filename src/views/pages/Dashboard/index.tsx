@@ -59,6 +59,7 @@ const Dashboard: React.FC = () => {
                         title: "Favor realizar o login novamente.",
                     });
                     history.push("/login");
+                    return
                 }
                 // Other errors will end up here, is this case is probably a network issue
                 addToast({
