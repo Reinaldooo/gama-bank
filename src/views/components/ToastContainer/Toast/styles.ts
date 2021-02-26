@@ -27,6 +27,10 @@ export const Container = styled(animated.div)<ContainerProps>`
   background: #fff;
   color: #71aeda;
 
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+
   /* Will apply different styles depending on the type prop */
   ${(props) => props.type && toastTypes[props.type]}
 
