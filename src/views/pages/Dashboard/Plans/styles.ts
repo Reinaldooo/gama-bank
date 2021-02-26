@@ -68,7 +68,7 @@ select {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 10px 10px 20px;
+    margin: 10px 5px 20px;
 
     .text {
       text-align: justify;
