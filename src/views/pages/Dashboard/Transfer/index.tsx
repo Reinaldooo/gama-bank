@@ -39,7 +39,7 @@ const Transfer: React.FC = () => {
     const history = useHistory()
 
     async function transfer( data : ITransferForms ) {
-      
+
         const postData =  {
             conta: debitAccount!.id,
             data: data.data,
@@ -58,7 +58,7 @@ const Transfer: React.FC = () => {
             const schema = Yup.object({
               data: Yup.string().required("Campo obrigatório"),
               descricao: Yup.string().required("Campo obrigatório"),
-              valor: Yup.number().required("Campo obrigatório"),
+              valor: Yup.number().max(10000, "Valor máximo de R$ 10.000").required("Campo obrigatório"),
               destinatario: Yup.string(),
             });
       
