@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import {useHistory} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import api from "../../../services/api";
 import WhiteCardLoginRegister from "../../components/WhiteCardLoginRegister";
 import InputPrimary from "../../components/InputPrimary";
@@ -50,17 +50,16 @@ const PasswordPage: React.FC = () => {
 
       setLoading(true);
 
-      const { data: senhaTemporaria } = await api.post('nova-senha', {
-          email : "email@dominio.com",
-          login: user,
-      })
-      console.log(senhaTemporaria)
-      await api.post(`altera-senha`, postData, {params: {senhaTemporaria}});
+      const { data: senhaTemporaria } = await api.post("nova-senha", {
+        email: "email@dominio.com",
+        login: user,
+      });
+      await api.post(`altera-senha`, postData, { params: { senhaTemporaria } });
 
       addToast({
         title: "Senha redefinida com sucesso!",
       });
-      history.push('/login')
+      history.push("/login");
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
@@ -83,7 +82,10 @@ const PasswordPage: React.FC = () => {
   return (
     <>
       <Header />
-      <WhiteCardLoginRegister title="Esqueci minha senha" subtitle="Confirme seu CPF e escolha sua nova senha.">
+      <WhiteCardLoginRegister
+        title="Esqueci minha senha"
+        subtitle="Confirme seu CPF e escolha sua nova senha."
+      >
         <FormPassword>
           <Form ref={formRef} onSubmit={changePassGama}>
             <InputPrimary
@@ -104,7 +106,15 @@ const PasswordPage: React.FC = () => {
               icon={AiFillLock}
               placeholder="Confirme sua nova senha"
             />
-            <ButtonGeneric title="Enviar" type="submit" _colorHover="#FFFFFF" _bgHover="#8C52E5" icon={FiChevronRight} _loading={loading} _marTop="10px" />
+            <ButtonGeneric
+              title="Enviar"
+              type="submit"
+              _colorHover="#FFFFFF"
+              _bgHover="#8C52E5"
+              icon={FiChevronRight}
+              _loading={loading}
+              _marTop="10px"
+            />
           </Form>
         </FormPassword>
       </WhiteCardLoginRegister>

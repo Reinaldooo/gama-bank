@@ -10,7 +10,7 @@ import { IconBaseProps } from "react-icons";
 import { FiAlertTriangle } from "react-icons/fi";
 //
 import * as S from "./styles";
-import { formatCPF } from "../../../utils/formatter";
+import { formatCPF } from "../../../utils/helpers";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
@@ -92,11 +92,7 @@ const InputPrimaryMask: React.FC<InputProps> = ({
           <FiAlertTriangle size={20} />
         </S.ErrorTooltip>
       )}
-      {isBRL && (
-        <S.MaxValue>
-          Max: R$ 9.999,99
-        </S.MaxValue>
-      )}      
+      {isBRL && <S.MaxValue>Max: R$ 9.999,99</S.MaxValue>}
     </S.Container>
   );
 };

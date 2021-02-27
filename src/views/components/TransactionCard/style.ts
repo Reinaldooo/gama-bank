@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { mainPurple } from "../../../styles";
 
-export const Container = styled.div`
+export const Container = styled.div<{ isCredit: boolean }>`
   .extract-account-history {
     width: 100%;
     max-width: 100%;
@@ -9,6 +10,7 @@ export const Container = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     flex-flow: row wrap;
+    position: relative;
 
     .title-historic-account {
       display: flex;
@@ -96,7 +98,7 @@ export const Container = styled.div`
           @media (min-width: 0) and (max-width: 767px) {
             font-size: 18px;
           }
-          
+
           &--negative {
             color: lightcoral;
           }
@@ -120,4 +122,14 @@ export const Container = styled.div`
       }
     }
   }
+`;
+
+export const CreditBadge = styled.div`
+  position: absolute;
+  right: 0px;
+  top: 25px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: white;
+  background-color: ${mainPurple};
 `;

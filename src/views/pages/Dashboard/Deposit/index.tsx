@@ -18,7 +18,7 @@ import { useToast } from "../../../../context/toastContext";
 import getValidationErrors from "../../../../utils/getValidationErrors";
 import { debitTransactionSuccess } from "../../../../store/modules/accounts/actions";
 import InputPrimaryMask from "../../../components/InputPrimaryMask";
-import { createFloat } from "../../../../utils/formatter";
+import { createFloat } from "../../../../utils/helpers";
 
 interface DepositForm {
   data: string;
@@ -36,19 +36,21 @@ const Deposit: React.FC = () => {
   );
   const { addToast } = useToast();
 
-  async function deposit({descricao, data, valor}: DepositForm) {
+  async function deposit({ descricao, data, valor }: DepositForm) {
     try {
-      valor = createFloat(valor)
+      valor = createFloat(valor);
       // Start by cleaning errors
       formRef.current?.setErrors({});
 
       const schema = Yup.object({
         data: Yup.string().required("Campo obrigatório"),
         descricao: Yup.string().required("Campo obrigatório"),
-        valor: Yup.number().max(9999.99, "Valor máximo de R$ 9.999,99").required("Campo obrigatório"),
+        valor: Yup.number()
+          .max(9999.99, "Valor máximo de R$ 9.999,99")
+          .required("Campo obrigatório"),
       });
 
-      await schema.validate({descricao, data, valor}, { abortEarly: false });
+      await schema.validate({ descricao, data, valor }, { abortEarly: false });
 
       const postData = {
         conta: debitAccount!.id,
@@ -62,7 +64,6 @@ const Deposit: React.FC = () => {
       setLoading(true);
 
       await api.post(`lancamentos`, postData).then((response) => {
-        console.log(response);
         if (response.status === 200) {
           history.push("/dashboard");
         } else {
@@ -76,7 +77,7 @@ const Deposit: React.FC = () => {
           // This id is temporary, it will be replaced with the real one after a reload
           id: shortid(),
           planoConta: transactionTypes!["R"],
-          valor: Number(valor)
+          valor: Number(valor),
         })
       );
 
