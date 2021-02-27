@@ -1,11 +1,10 @@
 export const ACCOUNT_DATA_SUCCESS: string = "ACCOUNT_DATA_SUCCESS";
-export const ACCOUNT_DATA_LOADING: string = "ACCOUNT_DATA_LOADING";
-export const ACCOUNT_DATA_ERROR: string = "ACCOUNT_DATA_ERROR";
 export const TRANSACTION_TYPES_SUCCESS: string = "TRANSACTION_TYPES_SUCCESS";
-export const TRANSACTION_ERROR: string = "TRANSACTION_ERROR";
+export const SET_ACTIVE_MONTH: string = "SET_ACTIVE_MONTH";
 export const DEBIT_TRANSACTION_SUCCESS: string = "DEBIT_TRANSACTION_SUCCESS";
 export const CREDIT_TRANSACTION_SUCCESS: string = "CREDIT_TRANSACTION_SUCCESS";
-export const TOGGLE_TRANSACTION_VISIBILITY: string = "TOGGLE_TRANSACTION_VISIBILITY";
+export const TOGGLE_TRANSACTION_VISIBILITY: string =
+  "TOGGLE_TRANSACTION_VISIBILITY";
 
 export interface IPlanoConta {
   id: number;
@@ -23,6 +22,7 @@ export interface ILancamento {
   tipo: string;
   valor: number;
   planoConta: IPlanoConta;
+  isCredit?: boolean;
 }
 
 export interface ILancamentoRedux {
@@ -50,25 +50,35 @@ export interface ITransactionTypes {
   [key: string]: IPlanoConta;
 }
 
+export type DateInfo = {
+  month: string;
+  year: number;
+  lastDay: number;
+};
+
 export interface IDashboardState {
   fetchAccountsError: boolean;
   transactionError: boolean;
   loading: boolean;
+  currentMonth: DateInfo | null;
+  previousMonth: DateInfo | null;
+  activeMonth: string;
   debitAccount: IConta | null;
   creditAccount: IConta | null;
-  debitTransactions: ILancamento[] | null;
-  creditTransactions: ILancamento[] | null;
+  transactions: ILancamento[] | null;
   transactionTypes: ITransactionTypes | null;
-  hideInfo: boolean
+  hideInfo: boolean;
 }
 
 export interface IAction {
   type:
     | typeof ACCOUNT_DATA_SUCCESS
-    | typeof ACCOUNT_DATA_LOADING
-    | typeof ACCOUNT_DATA_ERROR
+    | typeof SET_ACTIVE_MONTH
     | typeof DEBIT_TRANSACTION_SUCCESS
-    | typeof CREDIT_TRANSACTION_SUCCESS
-    | typeof TRANSACTION_ERROR;
+    | typeof CREDIT_TRANSACTION_SUCCESS;
   payload?: any;
 }
+
+// As transacoes precisam ser unificadas e salvas em um unico array
+// As transacoes de credito precisam receber uma tag
+// Na hora inclusão devo verificar se é o mes atual e depois reordenar elas

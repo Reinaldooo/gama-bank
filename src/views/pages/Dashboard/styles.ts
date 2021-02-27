@@ -139,7 +139,7 @@ export const ContainerDashboard = styled.div`
           }
 
           .texto-welcome {
-            color: #FFFFFF;
+            color: #ffffff;
             font-size: 22px;
 
             @media (min-width: 0) and (max-width: 767px) {
@@ -206,7 +206,8 @@ export const ContainerDashboard = styled.div`
             margin-top: 15px;
             justify-content: flex-start;
             align-items: flex-start;
-            
+            position: relative;
+
             &:last-child {
               justify-content: flex-end;
               align-items: flex-start;
@@ -235,16 +236,13 @@ export const ContainerDashboard = styled.div`
                 align-items: center;
               }
             }
-            
 
             .title-historic-account {
               display: flex;
               align-items: center;
-              
-              
 
               .text-historic-account {
-                color: #9B9B9B;
+                color: #9b9b9b;
                 font-size: 18px;
                 font-weight: 400;
                 text-align: left;
@@ -253,7 +251,7 @@ export const ContainerDashboard = styled.div`
 
               .text-months {
                 padding: 0 10px;
-                color: #9B9B9B;
+                color: #9b9b9b;
                 font-size: 18px;
                 font-weight: 400;
                 text-align: center;
@@ -275,4 +273,4 @@ export const ContainerDashboard = styled.div`
       }
     }
   }
-`
+`;

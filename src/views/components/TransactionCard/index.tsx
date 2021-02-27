@@ -1,9 +1,9 @@
 import React from "react";
 //
-import { Container } from "./style";
+import { Container, CreditBadge } from "./style";
 import IconHistoryCard from "../../../assets/icon-history-card.png";
 import { ILancamento } from "../../../store/modules/accounts/types";
-import { formatBRL, formatDate } from "../../../utils/formatter";
+import { formatBRL, formatDate } from "../../../utils/helpers";
 
 interface ITransactionsMap {
   [key: string]: string;
@@ -23,13 +23,15 @@ const TransactionCard: React.FC<ITransactionCardProps> = ({
   valor,
   descricao,
   data,
+  isCredit = false,
 }) => {
   const formattedValue = formatBRL(valor);
   const formattedDate = formatDate(data);
 
   return (
-    <Container>
+    <Container isCredit={isCredit}>
       <div className="extract-account-history">
+        {isCredit && <CreditBadge>Crédito</CreditBadge>}
         <div className="row-historic-account">
           <div className="column-icon">
             <img

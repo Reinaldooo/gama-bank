@@ -4,12 +4,11 @@ import {
   IPlanoConta,
   ILancamentoRedux,
   ACCOUNT_DATA_SUCCESS,
-  ACCOUNT_DATA_LOADING,
-  ACCOUNT_DATA_ERROR,
   TRANSACTION_TYPES_SUCCESS,
   DEBIT_TRANSACTION_SUCCESS,
   CREDIT_TRANSACTION_SUCCESS,
-  TOGGLE_TRANSACTION_VISIBILITY
+  TOGGLE_TRANSACTION_VISIBILITY,
+  SET_ACTIVE_MONTH,
 } from "../types";
 
 export function accountDataSuccess(data: IAccounts): IAction {
@@ -19,22 +18,17 @@ export function accountDataSuccess(data: IAccounts): IAction {
   };
 }
 
-export function accountDataLoading(): IAction {
-  return {
-    type: ACCOUNT_DATA_LOADING,
-  };
-}
-
-export function accountDataError(): IAction {
-  return {
-    type: ACCOUNT_DATA_ERROR,
-  };
-}
-
 export function transactionTypesSuccess(tTypes: IPlanoConta[]): IAction {
   return {
     type: TRANSACTION_TYPES_SUCCESS,
     payload: tTypes,
+  };
+}
+
+export function setActiveMonth(month: string): IAction {
+  return {
+    type: SET_ACTIVE_MONTH,
+    payload: month,
   };
 }
 
@@ -58,6 +52,6 @@ export function creditTransactionSuccess(
 
 export function toggleTransactionVisibility(): IAction {
   return {
-    type: TOGGLE_TRANSACTION_VISIBILITY
+    type: TOGGLE_TRANSACTION_VISIBILITY,
   };
 }
