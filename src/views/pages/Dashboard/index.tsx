@@ -98,6 +98,7 @@ const Dashboard: React.FC = () => {
   return (
     <>
       <SideNav />
+      {console.log(process.env.NODE_ENV)}
       <ContainerDashboard>
         {loading ? (
           <MoneyLoader color="white" size={150} />
