@@ -131,6 +131,7 @@ const Plans: React.FC = () => {
                         icon={FiChevronRight}
                         _bgHover="#3da131"
                         _loading={loading}
+                        _marTop="40px"
                     />
                 </Form>
                 <div className="section-plans">
