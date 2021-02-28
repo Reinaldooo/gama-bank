@@ -67,7 +67,7 @@ const Transfer: React.FC = () => {
                     .min(2, "mínimo de 2 caracteres")
                     .required("Campo obrigatório"),
                 valor: Yup.number()
-                    .max(9999, "Valor máximo de R$ 9.999,99")
+                    .max(9999.99, "Valor máximo de R$ 9.999,99")
                     .min(2, "Valor mínimo de R$ 2,00")
                     .required("Campo obrigatório"),
                 destinatario: Yup.string().trim(),
@@ -86,7 +86,7 @@ const Transfer: React.FC = () => {
                 return;
             }
 
-            api.post(`lancamentos`, postData).then((response) => {
+            await api.post(`lancamentos`, postData).then((response) => {
                 if (response.status === 200) {
                     const lancamentoRedux = {
                         ...postData,
@@ -109,8 +109,6 @@ const Transfer: React.FC = () => {
                         type: "success",
                     });
                     history.push("/dashboard");
-                } else {
-                    console.log("deu error");
                 }
             });
         } catch (err) {
