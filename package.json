@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
@@ -22,6 +21,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
     "react-spring": "^8.0.27",
+    "react-test-renderer": "^17.0.1",
     "redux": "^4.0.5",
     "shortid": "^2.2.16",
     "styled-components": "^5.2.1",
@@ -54,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/react": "^11.2.5",
     "@types/react-redux": "^7.1.16",
     "@types/shortid": "^0.0.29",
     "@types/styled-components": "^5.1.7",
