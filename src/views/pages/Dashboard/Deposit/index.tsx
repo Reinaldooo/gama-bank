@@ -44,7 +44,11 @@ const Deposit: React.FC = () => {
 
             const schema = Yup.object({
                 data: Yup.string().trim().required("Campo obrigatório"),
-                descricao: Yup.string().trim().required("Campo obrigatório"),
+                descricao: Yup.string()
+                    .trim()
+                    .max(15, "máximo de 15 caracteres")
+                    .min(2, "mínimo de 2 caracteres")
+                    .required("Campo obrigatório"),
                 valor: Yup.number()
                     .max(9999.99, "Valor máximo de R$ 9.999,99")
                     .required("Campo obrigatório"),

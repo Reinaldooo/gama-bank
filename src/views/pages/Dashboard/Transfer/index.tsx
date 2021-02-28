@@ -61,15 +61,31 @@ const Transfer: React.FC = () => {
 
             const schema = Yup.object({
                 data: Yup.string().trim().required("Campo obrigatório"),
-                descricao: Yup.string().trim().required("Campo obrigatório"),
-                valor: Yup.number()
-                    .max(10000, "Valor máximo de R$ 10.000")
+                descricao: Yup.string()
+                    .trim()
+                    .max(15, "máximo de 15 caracteres")
+                    .min(2, "mínimo de 2 caracteres")
                     .required("Campo obrigatório"),
-                destinatario: Yup.string(),
+                valor: Yup.number()
+                    .max(9999, "Valor máximo de R$ 9.999,99")
+                    .min(2, "Valor mínimo de R$ 2,00")
+                    .required("Campo obrigatório"),
+                destinatario: Yup.string().trim(),
             });
 
             await schema.validate(data, { abortEarly: false });
+
             setLoading(true);
+
+            if (type === "TU" && postData.login === postData.contaDestino) {
+                setLoading(false);
+                addToast({
+                    title: "Você não pode transferir pra si mesmo!",
+                    type: "error",
+                });
+                return;
+            }
+
             api.post(`lancamentos`, postData).then((response) => {
                 if (response.status === 200) {
                     const lancamentoRedux = {
