@@ -21,128 +21,135 @@ import InputPrimaryMask from "../../../components/InputPrimaryMask";
 import { createFloat } from "../../../../utils/helpers";
 
 interface DepositForm {
-  data: string;
-  descricao: string;
-  valor: number | string;
+    data: string;
+    descricao: string;
+    valor: number | string;
 }
 
 const Deposit: React.FC = () => {
-  const [loading, setLoading] = useState(false);
-  const formRef = useRef<FormHandles>(null);
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const { debitAccount, transactionTypes } = useSelector(
-    (state: IDashboardState) => state
-  );
-  const { addToast } = useToast();
+    const [loading, setLoading] = useState(false);
+    const formRef = useRef<FormHandles>(null);
+    const history = useHistory();
+    const dispatch = useDispatch();
+    const { debitAccount, transactionTypes } = useSelector(
+        (state: IDashboardState) => state
+    );
+    const { addToast } = useToast();
 
-  async function deposit({ descricao, data, valor }: DepositForm) {
-    try {
-      valor = createFloat(valor);
-      // Start by cleaning errors
-      formRef.current?.setErrors({});
+    async function deposit({ descricao, data, valor }: DepositForm) {
+        try {
+            valor = createFloat(valor);
+            // Start by cleaning errors
+            formRef.current?.setErrors({});
 
-      const schema = Yup.object({
-        data: Yup.string().required("Campo obrigatório"),
-        descricao: Yup.string().required("Campo obrigatório"),
-        valor: Yup.number()
-          .max(9999.99, "Valor máximo de R$ 9.999,99")
-          .required("Campo obrigatório"),
-      });
+            const schema = Yup.object({
+                data: Yup.string().trim().required("Campo obrigatório"),
+                descricao: Yup.string().trim().required("Campo obrigatório"),
+                valor: Yup.number()
+                    .max(9999.99, "Valor máximo de R$ 9.999,99")
+                    .required("Campo obrigatório"),
+            });
 
-      await schema.validate({ descricao, data, valor }, { abortEarly: false });
+            await schema.validate(
+                { descricao, data, valor },
+                { abortEarly: false }
+            );
 
-      const postData = {
-        conta: debitAccount!.id,
-        data,
-        descricao,
-        login: isAuth().login!,
-        valor,
-        planoConta: transactionTypes!["R"].id,
-      };
+            const postData = {
+                conta: debitAccount!.id,
+                data,
+                descricao,
+                login: isAuth().login!,
+                valor,
+                planoConta: transactionTypes!["R"][0].id,
+            };
 
-      setLoading(true);
+            setLoading(true);
 
-      await api.post(`lancamentos`, postData).then((response) => {
-        if (response.status === 200) {
-          history.push("/dashboard");
-        } else {
-          console.log("deu erro");
+            await api.post(`lancamentos`, postData).then((response) => {
+                if (response.status === 200) {
+                    history.push("/dashboard");
+                } else {
+                    console.log("deu erro");
+                }
+            });
+
+            dispatch(
+                debitTransactionSuccess({
+                    ...postData,
+                    // This id is temporary, it will be replaced with the real one after a reload
+                    id: shortid(),
+                    planoConta: transactionTypes!["R"][0],
+                    valor: Number(valor),
+                })
+            );
+
+            addToast({
+                title: "Depósito realizado com sucesso!",
+            });
+            history.push("/dashboard");
+        } catch (err) {
+            if (err instanceof Yup.ValidationError) {
+                const errors = getValidationErrors(err);
+                // This is the way to set errors with unform. Each key is the input name and
+                // it will be set on the 'error' variable coming from the useField hook in the Comp
+                formRef.current?.setErrors(errors);
+                addToast({
+                    title: "Por favor confira seus dados.",
+                    type: "error",
+                });
+                return;
+            }
+            setLoading(false);
+            addToast({
+                title: "Ops, algo deu errado!",
+                type: "error",
+                message: "Por favor tente novamente.",
+            });
         }
-      });
-
-      dispatch(
-        debitTransactionSuccess({
-          ...postData,
-          // This id is temporary, it will be replaced with the real one after a reload
-          id: shortid(),
-          planoConta: transactionTypes!["R"],
-          valor: Number(valor),
-        })
-      );
-
-      addToast({
-        title: "Depósito realizado com sucesso!",
-      });
-      history.push("/dashboard");
-    } catch (err) {
-      if (err instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(err);
-        // This is the way to set errors with unform. Each key is the input name and
-        // it will be set on the 'error' variable coming from the useField hook in the Comp
-        formRef.current?.setErrors(errors);
-        addToast({
-          title: "Por favor confira seus dados.",
-          type: "error",
-        });
-        return;
-      }
-      setLoading(false);
-      addToast({
-        title: "Ops, algo deu errado!",
-        type: "error",
-        message: "Por favor tente novamente.",
-      });
     }
-  }
 
-  return (
-    <Container>
-      <Header>
-        <Link to="/dashboard">
-          {" "}
-          <FiChevronLeft size={30} />
-          Voltar
-        </Link>
-      </Header>
-      <WhiteCardDash _maxWidth="100%">
-        <div className="form-deposit">
-          <Form ref={formRef} onSubmit={deposit}>
-            <h3>Realize seu depósito</h3>
-            <InputPrimary name="data" type="date" placeholder="Data" />
-            <InputPrimary
-              name="descricao"
-              type="text"
-              placeholder="Descrição"
-            />
-            <InputPrimaryMask
-              mask="BRL"
-              name="valor"
-              type="text"
-              placeholder="Valor do depósito"
-            />
-            <ButtonGeneric
-              title="Realizar deposito agora"
-              type="submit"
-              _colorHover="#FFFFFF"
-              _bgHover="#3da131"
-              _loading={loading}
-            />
-          </Form>
-        </div>
-      </WhiteCardDash>
-    </Container>
-  );
+    return (
+        <Container>
+            <Header>
+                <Link to="/dashboard">
+                    {" "}
+                    <FiChevronLeft size={30} />
+                    Voltar
+                </Link>
+            </Header>
+            <WhiteCardDash _maxWidth="100%">
+                <div className="form-deposit">
+                    <Form ref={formRef} onSubmit={deposit}>
+                        <h3>Realize seu depósito</h3>
+                        <InputPrimary
+                            name="data"
+                            type="date"
+                            placeholder="Data"
+                        />
+                        <InputPrimary
+                            name="descricao"
+                            type="text"
+                            placeholder="Descrição"
+                        />
+                        <InputPrimaryMask
+                            mask="BRL"
+                            name="valor"
+                            type="text"
+                            placeholder="Valor do depósito"
+                        />
+                        <ButtonGeneric
+                            title="Realizar deposito agora"
+                            type="submit"
+                            _colorHover="#FFFFFF"
+                            _bgHover="#3da131"
+                            _loading={loading}
+                        />
+                    </Form>
+                </div>
+            </WhiteCardDash>
+        </Container>
+    );
 };
 
 export default Deposit;
