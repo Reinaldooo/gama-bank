@@ -2,7 +2,11 @@
 
 
 <p align="center">
+<<<<<<< HEAD
+  <img src="https://github.com/Reinaldooo/gama-bank/blob/readme-md/src/assets/reaccenture-equipe.png" alt="Unform"/>
+=======
   <img src="https://github.com/LaisMaas/RepositorioTeste/blob/main/img/reaccenture-equipe.png" alt="Unform"/>
+>>>>>>> origin
 </p><br/><br/>
 
 
@@ -11,18 +15,26 @@
 ## Summary
 
   - [Gama Bank Project](#gama-bank-project)
-  - [Layout](#layout)
-  - [Layout credit](#layout-credit)
+<<<<<<< HEAD
+  - [Layout](#layout)  
+=======
+  - [Layout](#layout) 
+>>>>>>> origin
   - [Publication ](#publication )
   - [Business Objectives](#business-objectives)
   - [Installation](#installation) 
   - [Frontend built With ](#frontend-built-with)
   - [Project requirements](#project-requirements)
-  - [Architecture Atomc Design](#architecture-atomc-design)
+<<<<<<< HEAD
+  - [Architecture Atomic Design](#architecture-atomic-design)
+=======
+  - [Architecture Atomic Design](#architecture-atomic-design)
+>>>>>>> origin
   - [Work Strategy](#work-strategy)  
   - [Thanks](#thanks)
   - [Credits](#credits)
   - [Contact Linkedin](#contact-linkedin)
+  - [Mobile Project](https://github.com/Reinaldooo/gama-bank-mobile)
 
   
 
@@ -37,7 +49,11 @@ We thank GamaAcademy and Accenture for this opportunity and the result provided 
 
 
 <p align="center">
+<<<<<<< HEAD
+  <img src="https://github.com/Reinaldooo/gama-bank/blob/readme-md/src/assets/dashboard-consulta.png" alt="Gama Bank Page"/>
+=======
   <img src="https://github.com/LaisMaas/RepositorioTeste/blob/main/img/dashboard-consulta.png" alt="Gama Bank Page"/>
+>>>>>>> origin
 
  
   - [Let's go!!!](https://reaccenture-bank.netlify.app/) Check out the project in full. 
@@ -72,7 +88,11 @@ The project was published on the Netlify platform:
 ## Business Objectives
 
 <p align="center">
+<<<<<<< HEAD
+  <img src="https://github.com/Reinaldooo/gama-bank/blob/readme-md/src/assets/Career%20Planning%20Mind%20Map.gif" alt="Gama Bank Page"/>
+=======
   <img src="https://github.com/LaisMaas/RepositorioTeste/blob/main/img/Career%20Planning%20Mind%20Map.gif" alt="Gama Bank Page"/>
+>>>>>>> origin
 
 <br/><br/>
 
@@ -95,7 +115,7 @@ And to run the application:
 The application will run on the local server on standard port 3000:
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open http://localhost:3000to view it in the browser.
 
 <br/><br/>
 
@@ -105,8 +125,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
   - [React](https://pt-br.reactjs.org/)  - A JavaScript library for building user interfaces
   - [Redux](https://redux.js.org/) - A Predictable State Container for JS Apps
-  - [Styled-components](https://styled-components.com/) - Visual primitives for the component age
   - [TypeScript](https://www.typescriptlang.org/) - TypeScript is an open-source language which builds on JavaScript
+  - [Styled-components](https://styled-components.com/) - Visual primitives for the component age
+  - [Unform](https://unform.dev/) - Unform is a performance-focused API for creating powerful forms experiences for both React and React Native
+  - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) - React Testing Library builds on top of DOM Testing Library by adding APIs for working with React components
+  - [Yup](https://www.typescriptlang.org/) - Yup is a simple object schema validator I came across recently. It is inspired by Joi, but smaller than that, so it is probably a better fit to the client side
 
 <br/><br/>
 
@@ -235,7 +258,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ## Work Strategy
 
 <p align="center">
+<<<<<<< HEAD
+  <img src="https://github.com/Reinaldooo/gama-bank/blob/readme-md/src/assets/work-strategy.png" alt="Gama Bank Page"/>
+=======
   <img src="https://github.com/LaisMaas/RepositorioTeste/blob/main/img/work-strategy.png" alt="Gama Bank Page"/>
+>>>>>>> origin
 
 <br/><br/>
 
@@ -249,17 +276,24 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 <br/>
 
  [<p align="center">
+<<<<<<< HEAD
+  <img src="https://github.com/Reinaldooo/gama-bank/blob/master/src/assets/gama-academy-logo-horizontal-verde-branco1%201.png" alt="Logo GamaAcademy" width="150" heigth="35"/>](https://www.gama.academy/)</p>
+ 
+ [<p align="center">
+  <img src="https://github.com/Reinaldooo/gama-bank/blob/readme-md/src/assets/accenture.png" alt="Logo Accenture" width="150" heigth="35"/>](https://www.accenture.com/br-pt)
+=======
   <img src="https://github.com/LaisMaas/RepositorioTeste/blob/main/img/accenture.png" alt="Logo GamaAcademy" width="150" heigth="35"/>](https://www.gama.academy/)</p>
  
  [<p align="center">
   <img src="https://github.com/LaisMaas/RepositorioTeste/blob/main/img/gamaAcademy.png" alt="Logo Accenture" width="150" heigth="35"/>](https://www.accenture.com/br-pt)
+>>>>>>> origin
  </p>
 
 <br/><br/>
 
 ## Credits
 
-<img src="https://github.com/LaisMaas/RepositorioTeste/blob/main/img/equipe-reaccenture.png" /></a>
+<img src="https://github.com/Reinaldooo/gama-bank/blob/readme-md/src/assets/gama-academy-logo-horizontal-verde-branco1%201.png" /></a>
 
 <br/>
 
