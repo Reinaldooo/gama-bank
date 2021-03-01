@@ -257,9 +257,11 @@ Open http://localhost:3000to view it in the browser.
 * To all partners participating in the Accenture Academy 2.0 ReactJS / React Native - class 2021
 <br/>
 
+
  [<p align="center">
-  <img src="https://github.com/Reinaldooo/gama-bank/blob/master/src/assets/gama-academy-logo-horizontal-verde-branco1%201.png" alt="Logo GamaAcademy" width="150" heigth="35"/>](https://www.gama.academy/)
-  </p>
+  <img src="https://github.com/Reinaldooo/gama-bank/blob/readme-md/src/assets/gama-academy-logo-horizontal-verde-branco1%201.png" alt="Logo Gama Academy" width="150" heigth="35"/>](https://www.gama.academy/)
+ </p>
+
  
  [<p align="center">
   <img src="https://github.com/Reinaldooo/gama-bank/blob/readme-md/src/assets/accenture.png" alt="Logo Accenture" width="150" heigth="35"/>](https://www.accenture.com/br-pt)
