@@ -2,7 +2,7 @@
 
 
 <p align="center">
-<<<<<<< HEAD
+
   <img src="https://github.com/Reinaldooo/gama-bank/blob/readme-md/src/assets/reaccenture-equipe.png" alt="Unform"/>
 </p>
 <br/><br/>
@@ -18,8 +18,7 @@
   - [Business Objectives](#business-objectives)
   - [Installation](#installation) 
   - [Frontend built With ](#frontend-built-with)
-  - [Project requirements](#project-requirements)
-  - [Architecture Atomic Design](#architecture-atomic-design)
+  - [Project requirements](#project-requirements)  
   - [Architecture Atomic Design](#architecture-atomic-design)
   - [Work Strategy](#work-strategy)  
   - [Thanks](#thanks)
@@ -259,7 +258,7 @@ Open http://localhost:3000to view it in the browser.
 <br/>
 
  [<p align="center">
-<<<<<<< HEAD
+
   <img src="https://github.com/Reinaldooo/gama-bank/blob/master/src/assets/gama-academy-logo-horizontal-verde-branco1%201.png" alt="Logo GamaAcademy" width="150" heigth="35"/>](https://www.gama.academy/)</p>
  
  [<p align="center">
@@ -270,7 +269,7 @@ Open http://localhost:3000to view it in the browser.
 
 ## Credits
 
-<img src="https://github.com/Reinaldooo/gama-bank/blob/readme-md/src/assets/gama-academy-logo-horizontal-verde-branco1%201.png" /></a>
+<img src="https://github.com/Reinaldooo/gama-bank/blob/master/src/assets/equipe-reaccenture.png" /></a>
 
 <br/>
 
