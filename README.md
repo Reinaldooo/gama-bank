@@ -1,4 +1,5 @@
-# Gama Bank - Accenture Academy 2.0 <br/><br/>
+# Gama Bank - Accenture Academy 2.0 
+<br/><br/>
 
 
 <p align="center">
