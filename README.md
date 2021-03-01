@@ -4,10 +4,8 @@
 <p align="center">
 <<<<<<< HEAD
   <img src="https://github.com/Reinaldooo/gama-bank/blob/readme-md/src/assets/reaccenture-equipe.png" alt="Unform"/>
-=======
-  <img src="https://github.com/LaisMaas/RepositorioTeste/blob/main/img/reaccenture-equipe.png" alt="Unform"/>
->>>>>>> origin
-</p><br/><br/>
+</p>
+<br/><br/>
 
 
 
@@ -15,21 +13,14 @@
 ## Summary
 
   - [Gama Bank Project](#gama-bank-project)
-<<<<<<< HEAD
-  - [Layout](#layout)  
-=======
-  - [Layout](#layout) 
->>>>>>> origin
+  - [Layout](#layout)
   - [Publication ](#publication )
   - [Business Objectives](#business-objectives)
   - [Installation](#installation) 
   - [Frontend built With ](#frontend-built-with)
   - [Project requirements](#project-requirements)
-<<<<<<< HEAD
   - [Architecture Atomic Design](#architecture-atomic-design)
-=======
   - [Architecture Atomic Design](#architecture-atomic-design)
->>>>>>> origin
   - [Work Strategy](#work-strategy)  
   - [Thanks](#thanks)
   - [Credits](#credits)
@@ -49,11 +40,8 @@ We thank GamaAcademy and Accenture for this opportunity and the result provided 
 
 
 <p align="center">
-<<<<<<< HEAD
+
   <img src="https://github.com/Reinaldooo/gama-bank/blob/readme-md/src/assets/dashboard-consulta.png" alt="Gama Bank Page"/>
-=======
-  <img src="https://github.com/LaisMaas/RepositorioTeste/blob/main/img/dashboard-consulta.png" alt="Gama Bank Page"/>
->>>>>>> origin
 
  
   - [Let's go!!!](https://reaccenture-bank.netlify.app/) Check out the project in full. 
@@ -88,12 +76,9 @@ The project was published on the Netlify platform:
 ## Business Objectives
 
 <p align="center">
-<<<<<<< HEAD
   <img src="https://github.com/Reinaldooo/gama-bank/blob/readme-md/src/assets/Career%20Planning%20Mind%20Map.gif" alt="Gama Bank Page"/>
-=======
-  <img src="https://github.com/LaisMaas/RepositorioTeste/blob/main/img/Career%20Planning%20Mind%20Map.gif" alt="Gama Bank Page"/>
->>>>>>> origin
 
+ 
 <br/><br/>
 
 
@@ -258,11 +243,9 @@ Open http://localhost:3000to view it in the browser.
 ## Work Strategy
 
 <p align="center">
-<<<<<<< HEAD
+
   <img src="https://github.com/Reinaldooo/gama-bank/blob/readme-md/src/assets/work-strategy.png" alt="Gama Bank Page"/>
-=======
-  <img src="https://github.com/LaisMaas/RepositorioTeste/blob/main/img/work-strategy.png" alt="Gama Bank Page"/>
->>>>>>> origin
+
 
 <br/><br/>
 
@@ -281,12 +264,6 @@ Open http://localhost:3000to view it in the browser.
  
  [<p align="center">
   <img src="https://github.com/Reinaldooo/gama-bank/blob/readme-md/src/assets/accenture.png" alt="Logo Accenture" width="150" heigth="35"/>](https://www.accenture.com/br-pt)
-=======
-  <img src="https://github.com/LaisMaas/RepositorioTeste/blob/main/img/accenture.png" alt="Logo GamaAcademy" width="150" heigth="35"/>](https://www.gama.academy/)</p>
- 
- [<p align="center">
-  <img src="https://github.com/LaisMaas/RepositorioTeste/blob/main/img/gamaAcademy.png" alt="Logo Accenture" width="150" heigth="35"/>](https://www.accenture.com/br-pt)
->>>>>>> origin
  </p>
 
 <br/><br/>
