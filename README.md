@@ -76,7 +76,7 @@ The project was published on the Netlify platform:
 ## Business Objectives
 
 <p align="center">
-  <img src="https://github.com/Reinaldooo/gama-bank/blob/readme-md/src/assets/Career%20Planning%20Mind%20Map.gif" alt="Gama Bank Page"/>
+  <img src="https://github.com/Reinaldooo/gama-bank/blob/master/src/assets/Career%20Planning%20Mind%20Map-G.gif" alt="Gama Bank Page"/>
 
  
 <br/><br/>
